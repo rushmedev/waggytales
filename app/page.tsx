@@ -45,7 +45,7 @@ const navItems = [
 
 const highlightStats: Stat[] = [
   { title: "Open Hours", value: "24/7 Premium Care", icon: Clock3 },
-  { title: "Visit Timings", value: "10:00 AM - 6:00 PM", icon: CalendarClock },
+  { title: "Visit Timings", value: "10:00 AM - 6:00 PM(Mon-Fri)", icon: CalendarClock },
   { title: "Facility Open Hours", value: "7:00 AM - 10:00 PM (Mon - Sun)", icon: Clock3 },
   { title: "Customer Call Time", value: "9:00 AM - 9:00 PM", icon: Phone },
   { title: "Golden Tulip Colony", value: "Hyderabad, TS", icon: MapPin },
@@ -404,6 +404,7 @@ export default function Home() {
                   <CalendarClock className="wt-icon wt-icon-inline" />
                   <span>Customer Call Time: 9:00 AM - 9:00 PM</span>
                 </li>
+                <li>During weekends and festival times we are closed for human visits.</li>
               </ul>
               <form className="wt-contact-form" action="#">
                 <label htmlFor="email" className="wt-sr-only">
