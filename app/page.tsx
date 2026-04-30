@@ -8,8 +8,10 @@ import {
   MapPin,
   MessageCircleQuestion,
   Phone,
+  Quote,
   ShieldCheck,
   Sparkles,
+  Star,
   Users,
 } from "lucide-react";
 import RevealSection from "./components/reveal-section";
@@ -34,6 +36,7 @@ type Stat = {
   title: string;
   value: string;
   icon: IconType;
+  note?: string;
 };
 
 const navItems = [
@@ -48,7 +51,12 @@ const highlightStats: Stat[] = [
   { title: "Visit Timings", value: "10:00 AM - 6:00 PM(Mon-Fri)", icon: CalendarClock },
   { title: "Facility Open Hours", value: "7:00 AM - 10:00 PM (Mon - Sun)", icon: Clock3 },
   { title: "Customer Call Time", value: "9:00 AM - 9:00 PM", icon: Phone },
-  { title: "Golden Tulip Colony", value: "Hyderabad, TS", icon: MapPin },
+  {
+    title: "Golden Tulip Colony",
+    value: "Hyderabad, TS",
+    icon: MapPin,
+    note: "During weekends and festival times we are closed for human visits.",
+  },
 ];
 
 const services: Service[] = [
@@ -234,9 +242,12 @@ export default function Home() {
           <div className="wt-shell wt-strip-grid">
             {highlightStats.map((item) => (
               <article key={item.title} className="wt-strip-item">
-                <item.icon className="wt-icon wt-icon-inline" />
-                <p>{item.title}</p>
+                <div className="wt-strip-icon-wrap">
+                  <item.icon className="wt-icon wt-icon-inline" />
+                </div>
+                <p className="wt-strip-label">{item.title}</p>
                 <strong>{item.value}</strong>
+                {item.note ? <span className="wt-strip-note">{item.note}</span> : null}
               </article>
             ))}
           </div>
@@ -339,15 +350,27 @@ export default function Home() {
             <div className="wt-testimonials-grid">
               {testimonials.map((item) => (
                 <article key={item.author} className="wt-testimonial-card">
-                  <p className="wt-stars" aria-hidden="true">
-                    *****
+                  <div className="wt-review-top">
+                    <p className="wt-stars" aria-label="5 star review">
+                      {Array.from({ length: 5 }).map((_, idx) => (
+                        <Star key={idx} className="wt-star-icon" />
+                      ))}
+                    </p>
+                    <span className="wt-google-pill">
+                      <span className="wt-google-g">G</span>
+                      Google Review
+                    </span>
+                  </div>
+                  <p className="wt-quote">
+                    <Quote className="wt-quote-mark" />
+                    <span>&quot;{item.quote}&quot;</span>
                   </p>
-                  <p className="wt-quote">&quot;{item.quote}&quot;</p>
                   <div className="wt-reviewer">
                     <span>{item.initials}</span>
                     <div>
                       <strong>{item.author}</strong>
                       <p>{item.location}</p>
+                      <small className="wt-review-source">Verified Google review</small>
                     </div>
                   </div>
                 </article>
@@ -390,7 +413,7 @@ export default function Home() {
                 </li>
                 <li className="wt-contact-item">
                   <Mail className="wt-icon wt-icon-inline" />
-                  <span>pawfectflow.waggytales@gmail.com</span>
+                  <span>pawfectwaggytales@gmail.com</span>
                 </li>
                 <li className="wt-contact-item">
                   <Phone className="wt-icon wt-icon-inline" />
@@ -493,3 +516,4 @@ export default function Home() {
     </div>
   );
 }
+

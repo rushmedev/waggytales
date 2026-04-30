@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import type { CSSProperties } from "react";
 import { siteTheme } from "./config/theme";
 import "./globals.css";
@@ -42,9 +43,13 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${beVietnamPro.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" style={themeVariables}>
+        <Script
+          id="contentsquare-uxa"
+          src="https://t.contentsquare.net/uxa/9aee59e99b03b.js"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>
   );
 }
-
