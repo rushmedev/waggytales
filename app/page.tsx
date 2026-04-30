@@ -38,6 +38,9 @@ type Stat = {
   value: string;
   icon: IconType;
   note?: string;
+  href?: string;
+  eventName?: string;
+  eventParams?: Record<string, string | number | boolean>;
 };
 
 const navItems = [
@@ -46,6 +49,9 @@ const navItems = [
   { label: "Testimonials", href: "#testimonials" },
   { label: "FAQs", href: "#faqs" },
 ];
+
+const callNumber = "09705241131";
+const dialerUrl = `tel:${callNumber}`;
 
 const highlightStats: Stat[] = [
   { title: "Open Hours", value: "24/7 Premium Care", icon: Clock3 },
@@ -57,6 +63,14 @@ const highlightStats: Stat[] = [
     value: "Hyderabad, TS",
     icon: MapPin,
     note: "During weekends and festival times we are closed for human visits.",
+  },
+  {
+    title: "Phone Number",
+    value: callNumber,
+    icon: Phone,
+    href: dialerUrl,
+    eventName: "call_click",
+    eventParams: { button_location: "stats_strip_phone", phone_number: callNumber },
   },
 ];
 
@@ -160,8 +174,6 @@ const faqs = [
 const googleMapsUrl = "https://maps.app.goo.gl/kMudCZpQU24WpRqr9";
 const googleMapsEmbedUrl =
   "https://www.google.com/maps?output=embed&q=M+%26+M+Waggy+Tales,+Golden+Tulip+Colony,+Hyderabad,+Telangana&z=17";
-const callNumber = "09705241131";
-const dialerUrl = `tel:${callNumber}`;
 const whatsappUrl = "https://wa.me/919705241131?text=Hi%20M%20%26%20M%20Waggy%20Tales%2C%20I%20want%20to%20know%20more.";
 const registerNowUrl = "https://pettleapp.com/booknow/fc0db379-e032-5954-00ac-a00e6eba44b7";
 
@@ -261,7 +273,21 @@ export default function Home() {
                   <item.icon className="wt-icon wt-icon-inline" />
                 </div>
                 <p className="wt-strip-label">{item.title}</p>
-                <strong>{item.value}</strong>
+                {item.href ? (
+                  <strong>
+                    <TrackedLink
+                      className="wt-strip-link"
+                      href={item.href}
+                      eventName={item.eventName ?? "link_click"}
+                      eventParams={item.eventParams}
+                      aria-label={`${item.title}: ${item.value}`}
+                    >
+                      {item.value}
+                    </TrackedLink>
+                  </strong>
+                ) : (
+                  <strong>{item.value}</strong>
+                )}
                 {item.note ? <span className="wt-strip-note">{item.note}</span> : null}
               </article>
             ))}

@@ -8,6 +8,13 @@ type TrackedLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   eventParams?: Record<string, string | number | boolean>;
 };
 
+const LOCAL_HOSTNAMES = new Set(["localhost", "127.0.0.1", "::1"]);
+
+function shouldTrackForHostname(hostname: string) {
+  const normalizedHost = hostname.toLowerCase();
+  return !LOCAL_HOSTNAMES.has(normalizedHost) && !normalizedHost.endsWith(".local");
+}
+
 export default function TrackedLink({
   eventName,
   eventParams,
@@ -15,7 +22,9 @@ export default function TrackedLink({
   ...anchorProps
 }: TrackedLinkProps) {
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    sendGAEvent("event", eventName, eventParams ?? {});
+    if (shouldTrackForHostname(window.location.hostname)) {
+      sendGAEvent("event", eventName, eventParams ?? {});
+    }
     onClick?.(event);
   };
 

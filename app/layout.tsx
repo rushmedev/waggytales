@@ -1,8 +1,8 @@
 ﻿import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Plus_Jakarta_Sans } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import type { CSSProperties } from "react";
+import GoogleAnalyticsSafe from "./components/google-analytics-safe";
 import { siteTheme } from "./config/theme";
 import "./globals.css";
 
@@ -53,7 +53,7 @@ export default function RootLayout({
         />
         {children}
       </body>
-      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
+      <GoogleAnalyticsSafe gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }
