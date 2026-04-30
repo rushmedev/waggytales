@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import RevealSection from "./components/reveal-section";
 import ScrollProgress from "./components/scroll-progress";
+import TrackedLink from "./components/tracked-link";
 import { siteTheme } from "./config/theme";
 
 type IconType = ComponentType<{ className?: string }>;
@@ -190,9 +191,15 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <a className="wt-btn wt-btn-primary" href={dialerUrl} aria-label={`Call ${callNumber}`}>
+          <TrackedLink
+            className="wt-btn wt-btn-primary"
+            href={dialerUrl}
+            aria-label={`Call ${callNumber}`}
+            eventName="call_click"
+            eventParams={{ button_location: "navbar", phone_number: callNumber }}
+          >
             Book Now
-          </a>
+          </TrackedLink>
         </nav>
       </header>
 
@@ -208,17 +215,25 @@ export default function Home() {
               your furry family is treated like our own.
             </p>
             <div className="wt-action-row">
-              <a className="wt-btn wt-btn-primary" href={dialerUrl} aria-label={`Call ${callNumber}`}>
+              <TrackedLink
+                className="wt-btn wt-btn-primary"
+                href={dialerUrl}
+                aria-label={`Call ${callNumber}`}
+                eventName="call_click"
+                eventParams={{ button_location: "hero", phone_number: callNumber }}
+              >
                 Book Now
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
                 className="wt-btn wt-btn-secondary"
                 href={registerNowUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                eventName="register_click"
+                eventParams={{ button_location: "hero_register" }}
               >
                 Register Now
-              </a>
+              </TrackedLink>
             </div>
           </article>
 
@@ -427,6 +442,17 @@ export default function Home() {
                   <CalendarClock className="wt-icon wt-icon-inline" />
                   <span>Customer Call Time: 9:00 AM - 9:00 PM</span>
                 </li>
+                <li className="wt-contact-item">
+                  <Phone className="wt-icon wt-icon-inline" />
+                  <TrackedLink
+                    href={dialerUrl}
+                    aria-label={`Call ${callNumber}`}
+                    eventName="call_click"
+                    eventParams={{ button_location: "contact_section", phone_number: callNumber }}
+                  >
+                    {callNumber}
+                  </TrackedLink>
+                </li>
                 <li>During weekends and festival times we are closed for human visits.</li>
               </ul>
               <form className="wt-contact-form" action="#">
@@ -503,17 +529,18 @@ export default function Home() {
         <p className="wt-copyright">(c) 2026 {siteTheme.brand.name}. All rights reserved.</p>
       </footer>
 
-      <a
+      <TrackedLink
         className="wt-whatsapp-fab"
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
+        eventName="whatsapp_click"
+        eventParams={{ button_location: "floating_button" }}
       >
         <Image src="/whatsapp.svg" alt="" width={16} height={16} className="wt-whatsapp-icon" />
         <span>WhatsApp</span>
-      </a>
+      </TrackedLink>
     </div>
   );
 }
-

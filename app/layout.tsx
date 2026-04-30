@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Plus_Jakarta_Sans } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import type { CSSProperties } from "react";
 import { siteTheme } from "./config/theme";
@@ -26,6 +27,8 @@ const themeVariables: CSSProperties = {
   "--wt-line": siteTheme.colors.line,
 } as CSSProperties;
 
+const GA_MEASUREMENT_ID = "G-79DP0HDRY5";
+
 export const metadata: Metadata = {
   title: `${siteTheme.brand.name} | Premium Pet Care in Hyderabad`,
   description:
@@ -50,6 +53,7 @@ export default function RootLayout({
         />
         {children}
       </body>
+      <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }
