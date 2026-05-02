@@ -33,6 +33,39 @@ export const metadata: Metadata = {
   title: `${siteTheme.brand.name} | Premium Pet Care in Hyderabad`,
   description:
     "Premium pet boarding, grooming, and daycare designed for comfort, safety, and joyful tails.",
+  keywords: [
+    "dog boarding Hyderabad",
+    "pet home stay Hyderabad",
+    "dog grooming Hyderabad",
+    "pet daycare Hyderabad",
+    "M & M Waggy Tales",
+    "Golden Tulip Colony pet care",
+  ],
+  category: "pet care",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    title: `${siteTheme.brand.name} | Premium Pet Care in Hyderabad`,
+    description:
+      "Premium pet boarding, grooming, daycare, and vet support in Hyderabad with trusted care and transparent updates.",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteTheme.brand.name} | Premium Pet Care in Hyderabad`,
+    description:
+      "Premium pet boarding, grooming, daycare, and vet support in Hyderabad with trusted care and transparent updates.",
+  },
 };
 
 export default function RootLayout({

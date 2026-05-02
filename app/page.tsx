@@ -1,4 +1,5 @@
 ﻿import Image from "next/image";
+import Link from "next/link";
 import type { ComponentType } from "react";
 import {
   CalendarClock,
@@ -17,15 +18,11 @@ import {
 import RevealSection from "./components/reveal-section";
 import ScrollProgress from "./components/scroll-progress";
 import TrackedLink from "./components/tracked-link";
+import { contactInfo } from "./config/contact";
 import { siteTheme } from "./config/theme";
+import { serviceDetails } from "./data/services";
 
 type IconType = ComponentType<{ className?: string }>;
-
-type Service = {
-  title: string;
-  description: string;
-  tag?: string;
-};
 
 type Feature = {
   title: string;
@@ -37,8 +34,8 @@ type Stat = {
   title: string;
   value: string;
   icon: IconType;
-  note?: string;
   href?: string;
+  note?: string;
   eventName?: string;
   eventParams?: Record<string, string | number | boolean>;
 };
@@ -50,59 +47,28 @@ const navItems = [
   { label: "FAQs", href: "#faqs" },
 ];
 
-const callNumber = "09705241131";
-const dialerUrl = `tel:${callNumber}`;
-
 const highlightStats: Stat[] = [
   { title: "Open Hours", value: "24/7 Premium Care", icon: Clock3 },
-  { title: "Visit Timings", value: "10:00 AM - 6:00 PM(Mon-Fri)", icon: CalendarClock },
+  {
+    title: "Visit Timings",
+    value: "10:00 AM - 6:00 PM(Mon-Fri)",
+    icon: CalendarClock,
+    note: "During weekends and festival times we are closed for human visits.",
+  },
   { title: "Facility Open Hours", value: "7:00 AM - 10:00 PM (Mon - Sun)", icon: Clock3 },
   { title: "Customer Call Time", value: "9:00 AM - 9:00 PM", icon: Phone },
   {
     title: "Golden Tulip Colony",
     value: "Hyderabad, TS",
     icon: MapPin,
-    note: "During weekends and festival times we are closed for human visits.",
   },
   {
-    title: "Phone Number",
-    value: callNumber,
+    title: "Call Us",
+    value: contactInfo.callNumber,
     icon: Phone,
-    href: dialerUrl,
+    href: contactInfo.dialerUrl,
     eventName: "call_click",
-    eventParams: { button_location: "stats_strip_phone", phone_number: callNumber },
-  },
-];
-
-const services: Service[] = [
-  {
-    title: "Doggy Home Stay",
-    description:
-      "Cage-free, personalized care in a loving home environment where your pet is never alone.",
-    tag: "Popular",
-  },
-  {
-    title: "Pet Spa & Salon",
-    description:
-      "Luxurious bathing and gentle grooming sessions designed for comfort.",
-  },
-  {
-    title: "Vet Clinic",
-    description:
-      "Comprehensive care and wellness checkups to keep every companion healthy.",
-  },
-  {
-    title: "Pet Store",
-    description: "Premium food and accessories curated for active pets.",
-  },
-  {
-    title: "Swimming Pool",
-    description: "Therapeutic and fun hydro sessions for joint health and joy.",
-  },
-  {
-    title: "Training",
-    description:
-      "Professional behavior training to develop confidence and social skills.",
+    eventParams: { button_location: "stats_strip_phone", phone_number: contactInfo.callNumber },
   },
 ];
 
@@ -151,6 +117,27 @@ const testimonials = [
     location: "Labrador Mom",
     initials: "HN",
   },
+  {
+    quote:
+      "Zuzu has been with Waggy Tales since he was 30 days old. From vaccinations and essentials to grooming and swimming, they have cared for him at every stage. Their support during his tick fever gave us total confidence.",
+    author: "Aastha Misra",
+    location: "Pet Parent",
+    initials: "AM",
+  },
+  {
+    quote:
+      "We have used their services for 2 years for both my pets, Dude and Titli. They are well cared for, fed healthy food, and always come back happy. Daily updates while we are away give us real peace of mind.",
+    author: "Ananya Goswami",
+    location: "Pet Parent",
+    initials: "AG",
+  },
+  {
+    quote:
+      "I recently boarded my retriever Shiro for 12 days. The process was smooth, and I received regular videos and updates, including mealtime checks. The gentle social introduction with other dogs was handled beautifully.",
+    author: "Ahana Biswas",
+    location: "Shiro's Parent",
+    initials: "AB",
+  },
 ];
 
 const faqs = [
@@ -170,12 +157,6 @@ const faqs = [
       "Yes. We follow your feeding instructions and medication schedule with written checklists for each pet.",
   },
 ];
-
-const googleMapsUrl = "https://maps.app.goo.gl/kMudCZpQU24WpRqr9";
-const googleMapsEmbedUrl =
-  "https://www.google.com/maps?output=embed&q=M+%26+M+Waggy+Tales,+Golden+Tulip+Colony,+Hyderabad,+Telangana&z=17";
-const whatsappUrl = "https://wa.me/919705241131?text=Hi%20M%20%26%20M%20Waggy%20Tales%2C%20I%20want%20to%20know%20more.";
-const registerNowUrl = "https://pettleapp.com/booknow/fc0db379-e032-5954-00ac-a00e6eba44b7";
 
 export default function Home() {
   return (
@@ -205,10 +186,10 @@ export default function Home() {
           </ul>
           <TrackedLink
             className="wt-btn wt-btn-primary"
-            href={dialerUrl}
-            aria-label={`Call ${callNumber}`}
+            href={contactInfo.dialerUrl}
+            aria-label={`Call ${contactInfo.callNumber}`}
             eventName="call_click"
-            eventParams={{ button_location: "navbar", phone_number: callNumber }}
+            eventParams={{ button_location: "navbar", phone_number: contactInfo.callNumber }}
           >
             Book Now
           </TrackedLink>
@@ -229,16 +210,16 @@ export default function Home() {
             <div className="wt-action-row">
               <TrackedLink
                 className="wt-btn wt-btn-primary"
-                href={dialerUrl}
-                aria-label={`Call ${callNumber}`}
+                href={contactInfo.dialerUrl}
+                aria-label={`Call ${contactInfo.callNumber}`}
                 eventName="call_click"
-                eventParams={{ button_location: "hero", phone_number: callNumber }}
+                eventParams={{ button_location: "hero", phone_number: contactInfo.callNumber }}
               >
                 Book Now
               </TrackedLink>
               <TrackedLink
                 className="wt-btn wt-btn-secondary"
-                href={registerNowUrl}
+                href={contactInfo.registerNowUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 eventName="register_click"
@@ -274,17 +255,15 @@ export default function Home() {
                 </div>
                 <p className="wt-strip-label">{item.title}</p>
                 {item.href ? (
-                  <strong>
-                    <TrackedLink
-                      className="wt-strip-link"
-                      href={item.href}
-                      eventName={item.eventName ?? "link_click"}
-                      eventParams={item.eventParams}
-                      aria-label={`${item.title}: ${item.value}`}
-                    >
-                      {item.value}
-                    </TrackedLink>
-                  </strong>
+                  <TrackedLink
+                    className="wt-strip-value-link"
+                    href={item.href}
+                    aria-label={`${item.title}: ${item.value}`}
+                    eventName={item.eventName ?? "link_click"}
+                    eventParams={item.eventParams}
+                  >
+                    {item.value}
+                  </TrackedLink>
                 ) : (
                   <strong>{item.value}</strong>
                 )}
@@ -339,13 +318,16 @@ export default function Home() {
             </div>
 
             <div className="wt-services-grid">
-              {services.map((service) => (
-                <article key={service.title} className="wt-service-card">
+              {serviceDetails.map((service) => (
+                <article key={service.slug} className="wt-service-card">
                   <div className="wt-service-head">
                     <h3>{service.title}</h3>
                     {service.tag ? <span>{service.tag}</span> : null}
                   </div>
-                  <p>{service.description}</p>
+                  <p>{service.shortDescription}</p>
+                  <Link href={`/services/${service.slug}`} className="wt-service-link">
+                    View Details
+                  </Link>
                 </article>
               ))}
             </div>
@@ -388,34 +370,36 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="wt-testimonials-grid">
-              {testimonials.map((item) => (
-                <article key={item.author} className="wt-testimonial-card">
-                  <div className="wt-review-top">
-                    <p className="wt-stars" aria-label="5 star review">
-                      {Array.from({ length: 5 }).map((_, idx) => (
-                        <Star key={idx} className="wt-star-icon" />
-                      ))}
-                    </p>
-                    <span className="wt-google-pill">
-                      <span className="wt-google-g">G</span>
-                      Google Review
-                    </span>
-                  </div>
-                  <p className="wt-quote">
-                    <Quote className="wt-quote-mark" />
-                    <span>&quot;{item.quote}&quot;</span>
-                  </p>
-                  <div className="wt-reviewer">
-                    <span>{item.initials}</span>
-                    <div>
-                      <strong>{item.author}</strong>
-                      <p>{item.location}</p>
-                      <small className="wt-review-source">Verified Google review</small>
+            <div className="wt-testimonials-marquee">
+              <div className="wt-testimonials-track">
+                {[...testimonials, ...testimonials].map((item, index) => (
+                  <article key={`${item.author}-${index}`} className="wt-testimonial-card">
+                    <div className="wt-review-top">
+                      <p className="wt-stars" aria-label="5 star review">
+                        {Array.from({ length: 5 }).map((_, idx) => (
+                          <Star key={idx} className="wt-star-icon" />
+                        ))}
+                      </p>
+                      <span className="wt-google-pill">
+                        <span className="wt-google-g">G</span>
+                        Google Review
+                      </span>
                     </div>
-                  </div>
-                </article>
-              ))}
+                    <p className="wt-quote">
+                      <Quote className="wt-quote-mark" />
+                      <span>&quot;{item.quote}&quot;</span>
+                    </p>
+                    <div className="wt-reviewer">
+                      <span>{item.initials}</span>
+                      <div>
+                        <strong>{item.author}</strong>
+                        <p>{item.location}</p>
+                        <small className="wt-review-source">Verified Google review</small>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </RevealSection>
@@ -448,7 +432,7 @@ export default function Home() {
                   <span>Golden Tulip Colony, Hyderabad, Telangana</span>
                 </li>
                 <li>
-                  <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
+                  <a href={contactInfo.googleMapsUrl} target="_blank" rel="noopener noreferrer">
                     Open location in Google Maps
                   </a>
                 </li>
@@ -458,7 +442,7 @@ export default function Home() {
                 </li>
                 <li className="wt-contact-item">
                   <Phone className="wt-icon wt-icon-inline" />
-                  <span>{callNumber}</span>
+                  <span>{contactInfo.callNumber}</span>
                 </li>
                 <li className="wt-contact-item">
                   <Clock3 className="wt-icon wt-icon-inline" />
@@ -467,17 +451,6 @@ export default function Home() {
                 <li className="wt-contact-item">
                   <CalendarClock className="wt-icon wt-icon-inline" />
                   <span>Customer Call Time: 9:00 AM - 9:00 PM</span>
-                </li>
-                <li className="wt-contact-item">
-                  <Phone className="wt-icon wt-icon-inline" />
-                  <TrackedLink
-                    href={dialerUrl}
-                    aria-label={`Call ${callNumber}`}
-                    eventName="call_click"
-                    eventParams={{ button_location: "contact_section", phone_number: callNumber }}
-                  >
-                    {callNumber}
-                  </TrackedLink>
                 </li>
                 <li>During weekends and festival times we are closed for human visits.</li>
               </ul>
@@ -493,14 +466,14 @@ export default function Home() {
             </article>
             <article className="wt-map-card" aria-label="Location map preview">
               <a
-                href={googleMapsUrl}
+                href={contactInfo.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Open Google Maps location"
               >
                 <iframe
                   title="M & M Waggy Tales location map"
-                  src={googleMapsEmbedUrl}
+                  src={contactInfo.googleMapsEmbedUrl}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="wt-map-embed"
@@ -557,7 +530,7 @@ export default function Home() {
 
       <TrackedLink
         className="wt-whatsapp-fab"
-        href={whatsappUrl}
+        href={contactInfo.whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
@@ -565,7 +538,6 @@ export default function Home() {
         eventParams={{ button_location: "floating_button" }}
       >
         <Image src="/whatsapp.svg" alt="" width={16} height={16} className="wt-whatsapp-icon" />
-        <span>WhatsApp</span>
       </TrackedLink>
     </div>
   );

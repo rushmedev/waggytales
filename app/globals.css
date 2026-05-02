@@ -272,7 +272,7 @@ img {
 .wt-strip-grid {
   display: grid;
   gap: 0.8rem;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   padding: 1rem 0;
 }
 
@@ -300,13 +300,28 @@ img {
 
 .wt-strip-label {
   color: color-mix(in srgb, var(--wt-neutral) 72%, white);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   margin: 0;
+  text-align: center;
 }
 
 .wt-strip-item strong {
   font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
+  text-align: center;
+}
+
+.wt-strip-value-link {
+  color: var(--wt-primary);
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
+.wt-strip-value-link:hover {
+  text-decoration: underline;
 }
 
 .wt-strip-link {
@@ -320,8 +335,8 @@ img {
 
 .wt-strip-note {
   color: color-mix(in srgb, var(--wt-neutral) 72%, white);
-  font-size: 0.69rem;
-  line-height: 1.5;
+  font-size: 0.62rem;
+  line-height: 1.4;
   margin-top: 0.18rem;
   max-width: 32ch;
   text-align: center;
@@ -586,6 +601,19 @@ h2 {
   margin-top: 1.8rem;
 }
 
+.wt-testimonials-marquee {
+  margin-top: 1.8rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.wt-testimonials-track {
+  animation: wt-review-scroll 72s linear infinite;
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+}
+
 .wt-testimonial-card {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.9)),
@@ -595,17 +623,23 @@ h2 {
   box-shadow: 0 16px 24px rgba(45, 45, 45, 0.06);
   display: grid;
   gap: 0.85rem;
+  flex: 0 0 min(325px, calc(100vw - 2.4rem));
+  min-height: 255px;
   padding: 1.1rem;
+  text-align: center;
 }
 
 .wt-review-top {
   align-items: center;
   display: flex;
-  justify-content: space-between;
+  gap: 0.55rem;
+  justify-content: center;
+  width: 100%;
 }
 
 .wt-stars {
   display: inline-flex;
+  flex-shrink: 0;
   gap: 0.15rem;
   margin: 0;
 }
@@ -628,6 +662,7 @@ h2 {
   font-weight: 700;
   gap: 0.25rem;
   padding: 0.26rem 0.5rem;
+  white-space: nowrap;
 }
 
 .wt-google-g {
@@ -642,7 +677,9 @@ h2 {
   display: flex;
   gap: 0.35rem;
   font-style: italic;
+  justify-content: center;
   line-height: 1.7;
+  text-align: center;
 }
 
 .wt-quote-mark {
@@ -657,6 +694,9 @@ h2 {
   align-items: center;
   display: flex;
   gap: 0.7rem;
+  justify-content: center;
+  margin-top: auto;
+  width: 100%;
 }
 
 .wt-reviewer span {
@@ -675,11 +715,25 @@ h2 {
   margin: 0;
 }
 
+.wt-reviewer div {
+  text-align: center;
+}
+
 .wt-review-source {
   color: color-mix(in srgb, var(--wt-neutral) 68%, white);
   display: block;
   font-size: 0.66rem;
   margin-top: 0.15rem;
+}
+
+@keyframes wt-review-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .wt-faq-wrap {
@@ -890,22 +944,342 @@ h2 {
   box-shadow: 0 12px 24px rgba(37, 211, 102, 0.34);
   color: #ffffff;
   display: inline-flex;
-  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  gap: 0.4rem;
-  padding: 0.72rem 0.95rem;
+  height: 46px;
+  justify-content: center;
+  padding: 0;
   position: fixed;
   right: 1rem;
   text-decoration: none;
+  width: 46px;
   z-index: 60;
 }
 
 .wt-whatsapp-icon {
   display: block;
   filter: brightness(0) saturate(100%) invert(100%);
-  height: 1rem;
-  width: 1rem;
+  height: 1.15rem;
+  width: 1.15rem;
+}
+
+.wt-service-page {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(241, 107, 52, 0.08) 0, transparent 25%),
+    radial-gradient(circle at 90% 90%, rgba(162, 210, 255, 0.12) 0, transparent 30%),
+    linear-gradient(180deg, #fff9ef 0%, #fdf5e6 65%, #fbefdf 100%);
+}
+
+.wt-inner-nav-wrap {
+  padding-top: 0.8rem;
+}
+
+.wt-inner-nav {
+  align-items: center;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 251, 245, 0.88);
+  border: 1px solid rgba(236, 218, 198, 0.86);
+  border-radius: 16px;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: space-between;
+  padding: 0.7rem 0.8rem;
+}
+
+.wt-inner-nav-brand {
+  align-items: center;
+  color: var(--wt-primary);
+  display: inline-flex;
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 0.94rem;
+  font-weight: 700;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.wt-inner-nav-actions {
+  display: inline-flex;
+  gap: 0.55rem;
+}
+
+.wt-service-list-hero {
+  display: grid;
+  gap: 0.9rem;
+  padding: 2rem 0 1.6rem;
+  text-align: center;
+}
+
+.wt-service-list-hero h1,
+.wt-service-hero h1 {
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.wt-service-list-grid-wrap {
+  padding-bottom: 1.8rem;
+}
+
+.wt-service-list-grid {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: 1fr;
+}
+
+.wt-service-list-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(235, 214, 191, 0.9);
+  border-radius: 18px;
+  box-shadow: 0 14px 28px rgba(45, 45, 45, 0.08);
+  display: grid;
+  overflow: hidden;
+}
+
+.wt-service-list-image {
+  aspect-ratio: 16 / 10;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.wt-service-list-content {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem;
+}
+
+.wt-service-list-head {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.wt-service-list-head h2 {
+  font-size: 1.2rem;
+}
+
+.wt-service-list-head span {
+  background: color-mix(in srgb, var(--wt-primary) 18%, white);
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--wt-primary) 88%, black);
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 0.25rem 0.48rem;
+  text-transform: uppercase;
+}
+
+.wt-service-list-content p {
+  color: color-mix(in srgb, var(--wt-neutral) 82%, white);
+  font-size: 0.91rem;
+  line-height: 1.68;
+  margin: 0;
+}
+
+.wt-service-list-points {
+  display: grid;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wt-service-list-points li {
+  align-items: start;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.wt-service-list-points li span {
+  color: color-mix(in srgb, var(--wt-neutral) 82%, white);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.wt-service-list-content .wt-btn {
+  margin-top: 0.35rem;
+  width: fit-content;
+}
+
+.wt-service-list-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+}
+
+.wt-service-list-cta {
+  padding-bottom: 3.2rem;
+}
+
+.wt-service-list-cta-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.86)),
+    var(--wt-paw-pattern);
+  border: 1px solid rgba(235, 214, 191, 0.88);
+  border-radius: 18px;
+  display: grid;
+  gap: 0.7rem;
+  padding: 1.3rem;
+  text-align: center;
+}
+
+.wt-service-list-cta-card p {
+  color: color-mix(in srgb, var(--wt-neutral) 82%, white);
+  margin: 0;
+}
+
+.wt-service-list-cta-pills {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+}
+
+.wt-service-list-cta-pills a {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ecd9c4;
+  border-radius: 12px;
+  color: color-mix(in srgb, var(--wt-neutral) 86%, white);
+  display: inline-flex;
+  font-size: 0.88rem;
+  gap: 0.4rem;
+  justify-content: center;
+  padding: 0.58rem 0.68rem;
+  text-decoration: none;
+}
+
+.wt-service-hero {
+  align-items: center;
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: 1fr;
+  padding: 1.9rem 0;
+}
+
+.wt-service-hero-content {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.wt-service-hero-actions {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.35rem;
+}
+
+.wt-service-hero-actions .wt-btn {
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.wt-service-hero-media {
+  border: 1px solid rgba(235, 214, 191, 0.85);
+  border-radius: 18px;
+  box-shadow: var(--wt-shadow-soft);
+  overflow: hidden;
+}
+
+.wt-service-hero-image {
+  aspect-ratio: 16 / 11;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.wt-service-highlight-wrap {
+  padding-bottom: 1.8rem;
+}
+
+.wt-service-highlight-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+
+.wt-service-highlight-card {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(235, 214, 191, 0.85);
+  border-radius: 14px;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.76rem 0.82rem;
+}
+
+.wt-service-highlight-card p {
+  color: color-mix(in srgb, var(--wt-neutral) 83%, white);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.wt-service-body {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  padding-bottom: 3rem;
+}
+
+.wt-service-detail-card,
+.wt-service-gallery-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(235, 214, 191, 0.85);
+  border-radius: 16px;
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.wt-service-detail-head {
+  align-items: center;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.wt-service-detail-head h2 {
+  font-size: 1.2rem;
+}
+
+.wt-service-detail-card p {
+  color: color-mix(in srgb, var(--wt-neutral) 83%, white);
+  line-height: 1.72;
+  margin: 0;
+}
+
+.wt-service-detail-points {
+  display: grid;
+  gap: 0.55rem;
+  list-style: none;
+  margin: 0.2rem 0 0;
+  padding: 0;
+}
+
+.wt-service-detail-points li {
+  align-items: start;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.wt-service-detail-points span {
+  color: color-mix(in srgb, var(--wt-neutral) 82%, white);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.wt-service-gallery-grid {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: 1fr;
+}
+
+.wt-service-gallery-image {
+  border-radius: 12px;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 @media (max-width: 719px) {
@@ -960,7 +1334,6 @@ h2 {
   .wt-story-copy,
   .wt-why-intro,
   .wt-testimonial-head,
-  .wt-contact-card,
   .wt-final-cta-inner,
   .wt-feature-card,
   .wt-service-card,
@@ -975,6 +1348,33 @@ h2 {
   .wt-reviewer {
     justify-items: center;
     justify-content: center;
+  }
+
+  .wt-contact-card {
+    text-align: left;
+  }
+
+  .wt-contact-card h2,
+  .wt-contact-card li,
+  .wt-contact-card a,
+  .wt-contact-card span {
+    text-align: left;
+  }
+
+  .wt-contact-card .wt-contact-item {
+    align-items: start;
+    column-gap: 0.5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: start;
+    justify-items: start;
+    width: 100%;
+  }
+
+  .wt-contact-card ul,
+  .wt-contact-card form {
+    justify-items: start;
+    width: 100%;
   }
 
   .wt-trust-card {
@@ -1004,8 +1404,54 @@ h2 {
 
   .wt-whatsapp-fab {
     bottom: calc(0.9rem + env(safe-area-inset-bottom, 0px));
-    font-size: 0.78rem;
     right: 0.8rem;
+    height: 42px;
+    width: 42px;
+  }
+
+  .wt-inner-nav {
+    border-radius: 14px;
+    flex-direction: column;
+    padding: 0.7rem;
+  }
+
+  .wt-inner-nav-brand {
+    justify-content: center;
+  }
+
+  .wt-inner-nav-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .wt-inner-nav-actions .wt-btn {
+    flex: 1;
+  }
+
+  .wt-service-list-content .wt-btn {
+    width: 100%;
+  }
+
+  .wt-service-list-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .wt-service-hero-content,
+  .wt-service-list-content,
+  .wt-service-detail-card,
+  .wt-service-gallery-card {
+    text-align: center;
+  }
+
+  .wt-service-detail-head,
+  .wt-service-highlight-card,
+  .wt-service-detail-points li {
+    justify-content: center;
+  }
+
+  .wt-testimonials-track {
+    animation-duration: 90s;
   }
 }
 
@@ -1059,6 +1505,22 @@ h2 {
   .wt-footer-grid {
     grid-template-columns: 1.2fr 1fr 1fr;
   }
+
+  .wt-service-list-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wt-service-highlight-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wt-service-body {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .wt-service-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1084,5 +1546,32 @@ h2 {
 
   .wt-map-card {
     padding: 2rem;
+  }
+
+  .wt-service-list-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .wt-service-hero {
+    gap: 1.8rem;
+    grid-template-columns: 1.05fr 1fr;
+    padding-bottom: 2.2rem;
+    padding-top: 2.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wt-testimonials-marquee {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .wt-testimonials-track {
+    animation: none;
+    width: auto;
+  }
+
+  .wt-testimonial-card {
+    scroll-snap-align: start;
   }
 }
