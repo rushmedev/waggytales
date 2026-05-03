@@ -85,8 +85,8 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         {children}
+        <GoogleAnalyticsSafe gaId={GA_MEASUREMENT_ID} />
       </body>
-      <GoogleAnalyticsSafe gaId={GA_MEASUREMENT_ID} />
     </html>
   );
 }

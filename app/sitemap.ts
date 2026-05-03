@@ -15,6 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    {
+      url: `${siteUrl}/founders-message`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
 
   const serviceRoutes: MetadataRoute.Sitemap = serviceDetails.map((service) => ({

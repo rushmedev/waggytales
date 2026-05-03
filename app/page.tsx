@@ -15,6 +15,7 @@ import {
   Star,
   Users,
 } from "lucide-react";
+import HeroSlideshow from "./components/hero-slideshow";
 import RevealSection from "./components/reveal-section";
 import ScrollProgress from "./components/scroll-progress";
 import TrackedLink from "./components/tracked-link";
@@ -42,6 +43,7 @@ type Stat = {
 
 const navItems = [
   { label: "Services", href: "#services" },
+  { label: "Founders Message", href: "/founders-message" },
   { label: "About", href: "#about" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "FAQs", href: "#faqs" },
@@ -69,6 +71,33 @@ const highlightStats: Stat[] = [
     href: contactInfo.dialerUrl,
     eventName: "call_click",
     eventParams: { button_location: "stats_strip_phone", phone_number: contactInfo.callNumber },
+  },
+];
+
+const validationNumbers: Stat[] = [
+  {
+    title: "Avg Google Rating",
+    value: "4.7+",
+    icon: Star,
+    note: "Based on verified pet-parent reviews",
+  },
+  {
+    title: "Pets Served",
+    value: "2000+",
+    icon: Heart,
+    note: "Across boarding, grooming, clinic, and training",
+  },
+  {
+    title: "Premium Services",
+    value: "6+",
+    icon: Sparkles,
+    note: "One trusted destination for complete pet care",
+  },
+  {
+    title: "Care Monitoring",
+    value: "24/7",
+    icon: ShieldCheck,
+    note: "Round-the-clock supervision for comfort and safety",
   },
 ];
 
@@ -162,50 +191,53 @@ export default function Home() {
   return (
     <div className="wt-page" id="top">
       <ScrollProgress />
-      <header className="wt-shell wt-nav-wrap">
-        <nav className="wt-nav">
-          <div className="wt-brand-wrap">
-            <Image
-              src="/waggy.jpg"
-              alt={`${siteTheme.brand.name} logo`}
-              width={44}
-              height={44}
-              className="wt-brand-logo"
-              priority
-            />
-            <p className="wt-brand">{siteTheme.brand.name}</p>
-          </div>
-          <ul className="wt-nav-links" aria-label="Primary">
-            {navItems.map((item) => (
-              <li key={item.label}>
-                <a href={item.href} className="wt-nav-link">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <TrackedLink
-            className="wt-btn wt-btn-primary"
-            href={contactInfo.dialerUrl}
-            aria-label={`Call ${contactInfo.callNumber}`}
-            eventName="call_click"
-            eventParams={{ button_location: "navbar", phone_number: contactInfo.callNumber }}
-          >
-            Book Now
-          </TrackedLink>
-        </nav>
+      <header className="wt-nav-wrap">
+        <div className="wt-nav-atmosphere" aria-hidden="true" />
+        <div className="wt-shell wt-nav-shell">
+          <nav className="wt-nav">
+            <div className="wt-brand-wrap">
+              <Image
+                src="/waggy.jpg"
+                alt={`${siteTheme.brand.name} logo`}
+                width={44}
+                height={44}
+                className="wt-brand-logo"
+                priority
+              />
+              <p className="wt-brand">{siteTheme.brand.name}</p>
+            </div>
+            <ul className="wt-nav-links" aria-label="Primary">
+              {navItems.map((item) => (
+                <li key={item.label}>
+                  <a href={item.href} className="wt-nav-link">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <TrackedLink
+              className="wt-btn wt-btn-primary"
+              href={contactInfo.dialerUrl}
+              aria-label={`Call ${contactInfo.callNumber}`}
+              eventName="call_click"
+              eventParams={{ button_location: "navbar", phone_number: contactInfo.callNumber }}
+            >
+              Book Now
+            </TrackedLink>
+          </nav>
+        </div>
       </header>
 
       <main>
         <RevealSection className="wt-shell wt-hero">
           <article className="wt-hero-content">
             <p className="wt-pill">Hyderabad&apos;s #1 pet home-stay</p>
-            <h1>
+            <h1 className="wt-paw-heading wt-paw-heading-center">
               Your pet, <span>our priority</span>
             </h1>
             <p className="wt-copy">
-              Tail-wagging gateways for pets in Hyderabad. From home-stay joy to expressive grooming,
-              your furry family is treated like our own.
+              Tail-wagging gateways for pets in Hyderabad. From home-stay joy to expressive
+              grooming, your furry family is treated like our own.
             </p>
             <div className="wt-action-row">
               <TrackedLink
@@ -231,19 +263,71 @@ export default function Home() {
           </article>
 
           <article className="wt-hero-card">
-            <Image
-              src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1200&q=80"
-              alt="Happy golden retriever at daycare"
-              width={1200}
-              height={825}
-              className="wt-img-cover"
-              priority
-            />
+            <HeroSlideshow />
             <div className="wt-trust-card">
-              <strong>Trusted by 500+</strong>
+              <span className="wt-trust-label">Achievement</span>
+              <strong>2000+</strong>
               <p>Happy pet parents</p>
             </div>
           </article>
+        </RevealSection>
+
+        <RevealSection className="wt-proof-wrap" delay={0.055}>
+          <div className="wt-shell">
+            <div className="wt-section-head wt-proof-head">
+              <p className="wt-kicker">Trust in Numbers</p>
+              <h2 className="wt-paw-heading wt-paw-heading-center">Proof Pet Parents Can Feel</h2>
+              <p className="wt-copy wt-section-subcopy">
+                Real outcomes that reflect the consistency, care quality, and trust families place in
+                us.
+              </p>
+            </div>
+
+            <div className="wt-proof-grid">
+              {validationNumbers.map((item) => (
+                <article key={item.title} className="wt-proof-card">
+                  <item.icon className="wt-icon wt-icon-inline" />
+                  <p className="wt-proof-value">{item.value}</p>
+                  <h3>{item.title}</h3>
+                  {item.note ? <p className="wt-proof-note">{item.note}</p> : null}
+                </article>
+              ))}
+            </div>
+          </div>
+        </RevealSection>
+
+        <RevealSection className="wt-love-bridge" delay={0.058}>
+          <div className="wt-shell wt-love-grid">
+            <article className="wt-love-copy">
+              <p className="wt-kicker">Our Story</p>
+              <h2 className="wt-paw-heading">Weaving narratives of love</h2>
+              <p className="wt-copy">
+                Every wag, cuddle, and playful moment is part of a bigger story. We care for pets
+                with warmth, routine, and trust so families feel connected even when they are apart.
+              </p>
+              <p className="wt-love-quote">
+                &quot;For us, pet care is not a service checklist. It is a relationship built day by
+                day with love, responsibility, and joy.&quot;
+              </p>
+            </article>
+
+            <div className="wt-love-visuals">
+              <Image
+                src="/home-2.webp"
+                alt="Dogs enjoying supervised play and companionship"
+                width={1200}
+                height={800}
+                className="wt-love-image wt-love-image-main"
+              />
+              <Image
+                src="/home-3.webp"
+                alt="Comfort-focused pet care in a warm environment"
+                width={1200}
+                height={800}
+                className="wt-love-image wt-love-image-side"
+              />
+            </div>
+          </div>
         </RevealSection>
 
         <RevealSection className="wt-strip" delay={0.05}>
@@ -292,7 +376,7 @@ export default function Home() {
           </div>
           <article className="wt-story-copy">
             <p className="wt-kicker">Our Story</p>
-            <h2>Weaving narratives of love</h2>
+            <h2 className="wt-paw-heading">Weaving narratives of love</h2>
             <p className="wt-copy">
               Founded by Megha Paul and Manjeet Kumar, M &amp; M Waggy Tales is more than a boarding
               service. We started with one dream: every pet deserves a vacation as wonderful as their
@@ -310,7 +394,7 @@ export default function Home() {
             <div className="wt-section-head">
               <Sparkles className="wt-icon wt-icon-center" />
               <p className="wt-kicker">What We Offer</p>
-              <h2>Tailored services for every need</h2>
+              <h2 className="wt-paw-heading wt-paw-heading-center">Tailored services for every need</h2>
               <p className="wt-copy wt-section-subcopy">
                 From medical support to luxury pampering, our facilities are designed for modern pet
                 families.
@@ -336,7 +420,7 @@ export default function Home() {
 
         <RevealSection className="wt-shell wt-why" delay={0.12}>
           <article className="wt-why-intro">
-            <h2>Why we are the best choice</h2>
+            <h2 className="wt-paw-heading">Why we are the best choice</h2>
             <p className="wt-copy">
               Every detail at {siteTheme.brand.name} is crafted to help pets feel safe, playful, and
               deeply cared for.
@@ -364,7 +448,7 @@ export default function Home() {
         <RevealSection className="wt-testimonials-wrap" id="testimonials" delay={0.15}>
           <div className="wt-shell">
             <div className="wt-section-head wt-testimonial-head">
-              <h2>Happy tails</h2>
+              <h2 className="wt-paw-heading">Happy tails</h2>
               <p className="wt-copy wt-section-subcopy">
                 Don&apos;t just take our word for it. Listen to our community.
               </p>
@@ -409,7 +493,7 @@ export default function Home() {
             <div className="wt-section-head">
               <MessageCircleQuestion className="wt-icon wt-icon-center" />
               <p className="wt-kicker">FAQs</p>
-              <h2>Questions pet parents ask most</h2>
+              <h2 className="wt-paw-heading wt-paw-heading-center">Questions pet parents ask most</h2>
             </div>
             <div className="wt-faq-grid">
               {faqs.map((faq) => (
@@ -425,7 +509,7 @@ export default function Home() {
         <RevealSection className="wt-contact-wrap" id="contact" delay={0.2}>
           <div className="wt-shell wt-contact-grid">
             <article className="wt-contact-card">
-              <h2>Get in touch</h2>
+              <h2 className="wt-paw-heading">Get in touch</h2>
               <ul>
                 <li className="wt-contact-item">
                   <MapPin className="wt-icon wt-icon-inline" />

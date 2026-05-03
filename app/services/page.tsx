@@ -102,7 +102,9 @@ export default function ServicesPage() {
       <main>
         <RevealSection className="wt-shell wt-service-list-hero">
           <p className="wt-pill">All Services</p>
-          <h1>Premium services designed for every wag, walk, and wow moment</h1>
+          <h1 className="wt-paw-heading wt-paw-heading-center">
+            Premium services designed for every wag, walk, and wow moment
+          </h1>
           <p className="wt-copy">
             Discover professional pet care crafted with transparent updates, safe routines, and
             loving attention by our dedicated team in Hyderabad.
@@ -155,7 +157,7 @@ export default function ServicesPage() {
 
         <RevealSection className="wt-shell wt-service-list-cta" delay={0.12}>
           <article className="wt-service-list-cta-card">
-            <h2>Need help picking the right service?</h2>
+            <h2 className="wt-paw-heading wt-paw-heading-center">Need help picking the right service?</h2>
             <p>
               Call us for a quick recommendation based on your pet&apos;s age, breed, activity
               level, and routine.
