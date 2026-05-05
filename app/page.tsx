@@ -16,6 +16,7 @@ import {
   Users,
 } from "lucide-react";
 import HeroSlideshow from "./components/hero-slideshow";
+import ProofAnimationIcon, { type ProofAnimationName } from "./components/proof-animation-icon";
 import RevealSection from "./components/reveal-section";
 import ScrollProgress from "./components/scroll-progress";
 import TrackedLink from "./components/tracked-link";
@@ -39,6 +40,13 @@ type Stat = {
   note?: string;
   eventName?: string;
   eventParams?: Record<string, string | number | boolean>;
+};
+
+type ProofStat = {
+  title: string;
+  value: string;
+  animation: ProofAnimationName;
+  note?: string;
 };
 
 const navItems = [
@@ -74,29 +82,29 @@ const highlightStats: Stat[] = [
   },
 ];
 
-const validationNumbers: Stat[] = [
+const validationNumbers: ProofStat[] = [
   {
     title: "Avg Google Rating",
     value: "4.7+",
-    icon: Star,
+    animation: "paw-emblem",
     note: "Based on verified pet-parent reviews",
   },
   {
     title: "Pets Served",
     value: "2000+",
-    icon: Heart,
+    animation: "animal-lover",
     note: "Across boarding, grooming, clinic, and training",
   },
   {
     title: "Premium Services",
     value: "6+",
-    icon: Sparkles,
+    animation: "pet-love",
     note: "One trusted destination for complete pet care",
   },
   {
     title: "Care Monitoring",
     value: "24/7",
-    icon: ShieldCheck,
+    animation: "insurance",
     note: "Round-the-clock supervision for comfort and safety",
   },
 ];
@@ -286,7 +294,7 @@ export default function Home() {
             <div className="wt-proof-grid">
               {validationNumbers.map((item) => (
                 <article key={item.title} className="wt-proof-card">
-                  <item.icon className="wt-icon wt-icon-inline" />
+                  <ProofAnimationIcon name={item.animation} className="wt-proof-animation" />
                   <p className="wt-proof-value">{item.value}</p>
                   <h3>{item.title}</h3>
                   {item.note ? <p className="wt-proof-note">{item.note}</p> : null}
@@ -434,14 +442,29 @@ export default function Home() {
             />
           </article>
 
-          <div className="wt-feature-grid">
-            {features.map((feature) => (
-              <article key={feature.title} className="wt-feature-card">
-                <feature.icon className="wt-icon wt-icon-inline" />
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
-              </article>
-            ))}
+          <div className="wt-why-right">
+            <div className="wt-feature-grid">
+              {features.map((feature) => (
+                <article key={feature.title} className="wt-feature-card">
+                  <feature.icon className="wt-icon wt-icon-inline" />
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </article>
+              ))}
+            </div>
+
+            <article className="wt-care-promise-card">
+              <div className="wt-care-promise-badge">
+                <ProofAnimationIcon name="cruelty-free" className="wt-care-promise-icon" />
+              </div>
+              <h3>Cruelty Free and Leash Free</h3>
+              <p>
+                We follow a cruelty-free, leash-free care philosophy where pets can relax and move
+                naturally, just like they do at home. Our team stays constantly attentive to their
+                routines, emotions, meals, playtime, rest, and every small need that keeps them happy,
+                safe, and stress free.
+              </p>
+            </article>
           </div>
         </RevealSection>
 

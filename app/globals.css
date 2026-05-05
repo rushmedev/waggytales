@@ -64,6 +64,19 @@ img {
   z-index: 30;
 }
 
+.wt-nav-wrap::after {
+  background-image: url("/patterns.svg");
+  background-position: center;
+  background-repeat: repeat;
+  background-size: 760px auto;
+  content: "";
+  inset: 0;
+  opacity: 0.14;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
 .wt-nav-shell {
   position: relative;
   z-index: 2;
@@ -202,7 +215,33 @@ img {
   display: grid;
   gap: 2.4rem;
   grid-template-columns: 1fr;
+  isolation: isolate;
+  overflow: visible;
   padding: 2.2rem 0 3.2rem;
+  position: relative;
+}
+
+.wt-hero::before {
+  background-image: url("/patterns.svg");
+  background-position: center 70%;
+  background-repeat: repeat;
+  background-size: 920px auto;
+  content: "";
+  height: 100%;
+  left: 50%;
+  opacity: 0.19;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%) rotate(0deg) scale(1.14);
+  transform-origin: center;
+  width: 100vw;
+  z-index: 0;
+}
+
+.wt-hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .wt-hero-content h1 {
@@ -404,6 +443,11 @@ img {
   text-align: center;
 }
 
+.wt-proof-animation {
+  height: clamp(3.8rem, 10vw, 5.1rem);
+  width: clamp(3.8rem, 10vw, 5.1rem);
+}
+
 .wt-proof-value {
   color: color-mix(in srgb, var(--wt-primary) 86%, black);
   font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
@@ -524,9 +568,14 @@ img {
   background: linear-gradient(145deg, #fff5eb, #ffe8d7);
   border-radius: 999px;
   display: inline-flex;
-  height: 1.65rem;
+  height: 2.35rem;
   justify-content: center;
-  width: 1.65rem;
+  width: 2.35rem;
+}
+
+.wt-strip-icon-wrap .wt-icon-inline {
+  height: 1.3rem;
+  width: 1.3rem;
 }
 
 .wt-strip-label {
@@ -806,6 +855,11 @@ h2 {
   grid-template-columns: 1fr;
 }
 
+.wt-why-right {
+  display: grid;
+  gap: 0.95rem;
+}
+
 .wt-feature-card {
   background: var(--wt-white);
   border: 1px solid #efddca;
@@ -813,6 +867,49 @@ h2 {
   display: grid;
   gap: 0.45rem;
   padding: 1rem;
+}
+
+.wt-care-promise-card {
+  background: #ffffff;
+  border: 1px solid #efdac3;
+  border-radius: var(--wt-radius-md);
+  box-shadow: 0 12px 24px rgba(45, 45, 45, 0.06);
+  display: grid;
+  gap: 0.5rem;
+  justify-items: center;
+  justify-self: center;
+  max-width: 440px;
+  padding: 1.05rem 1.1rem 1.15rem;
+  text-align: center;
+}
+
+.wt-care-promise-badge {
+  align-items: center;
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px #efdac3,
+    0 8px 18px rgba(45, 45, 45, 0.08);
+  display: grid;
+  height: 7.2rem;
+  justify-content: center;
+  width: 7.2rem;
+}
+
+.wt-care-promise-icon {
+  height: 6rem;
+  width: 6rem;
+}
+
+.wt-care-promise-card h3 {
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 1rem;
+  margin: 0.1rem 0 0;
+}
+
+.wt-care-promise-card p {
+  margin: 0;
 }
 
 .wt-testimonials-wrap {
@@ -1755,6 +1852,18 @@ h2 {
   .wt-hero {
     gap: 1.7rem;
     padding: 1.45rem 0 2.1rem;
+  }
+
+  .wt-hero::before {
+    background-position: center 72%;
+    background-size: 700px auto;
+    opacity: 0.18;
+    transform: translateX(-50%) rotate(0deg) scale(1.12);
+  }
+
+  .wt-nav-wrap::after {
+    background-size: 620px auto;
+    opacity: 0.12;
   }
 
   .wt-copy {
