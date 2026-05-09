@@ -74,6 +74,16 @@ const serviceGalleryBySlug: Record<string, Array<{ src: string; alt: string }>> 
       alt: "Obedience training with a cheerful pet dog",
     },
   ],
+  "pet-party": [
+    {
+      src: "/thumbnails/thumb-party.webp",
+      alt: "Pet birthday celebration setup",
+    },
+    {
+      src: "/home-3.webp",
+      alt: "Happy dogs celebrating together",
+    },
+  ],
 };
 
 export function generateStaticParams() {
@@ -211,7 +221,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <main>
         <RevealSection className="wt-shell wt-service-hero">
           <article className="wt-service-hero-content">
-            <p className="wt-pill">{service.tag ?? "Premium Service"}</p>
+            <p className="wt-pill">Service</p>
             <h1>{service.title}</h1>
             <p className="wt-copy">{service.seoDescription}</p>
             <div className="wt-service-hero-actions">

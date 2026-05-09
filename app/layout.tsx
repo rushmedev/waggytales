@@ -1,8 +1,10 @@
 ﻿import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Plus_Jakarta_Sans } from "next/font/google";
+import Image from "next/image";
 import Script from "next/script";
 import type { CSSProperties } from "react";
 import GoogleAnalyticsSafe from "./components/google-analytics-safe";
+import { contactInfo } from "./config/contact";
 import { siteTheme } from "./config/theme";
 import "./globals.css";
 
@@ -85,6 +87,15 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
         {children}
+        <a
+          className="wt-whatsapp-fab"
+          href={contactInfo.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chat on WhatsApp"
+        >
+          <Image src="/whatsapp.svg" alt="" width={16} height={16} className="wt-whatsapp-icon" />
+        </a>
         <GoogleAnalyticsSafe gaId={GA_MEASUREMENT_ID} />
       </body>
     </html>

@@ -743,6 +743,23 @@ h2 {
   margin-top: 2.2rem;
 }
 
+.wt-home-services-stack {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 2.2rem;
+}
+
+.wt-home-services-grid {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.wt-home-services-grid--two {
+  margin-inline: auto;
+  width: 100%;
+}
+
 .wt-service-card {
   background: var(--wt-white);
   border: 1px solid rgba(235, 214, 191, 0.8);
@@ -758,6 +775,16 @@ h2 {
   position: relative;
   text-align: center;
   transition: transform 180ms ease, box-shadow 200ms ease;
+}
+
+.wt-home-service-image {
+  background: #ffffff;
+  border: 1px solid rgba(236, 218, 198, 0.75);
+  border-radius: 12px;
+  height: 170px;
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
 }
 
 .wt-service-card::before {
@@ -1359,29 +1386,36 @@ h2 {
 .wt-service-list-grid {
   display: grid;
   gap: 1.1rem;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .wt-service-list-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   border: 1px solid rgba(235, 214, 191, 0.9);
   border-radius: 18px;
   box-shadow: 0 14px 28px rgba(45, 45, 45, 0.08);
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   overflow: hidden;
 }
 
 .wt-service-list-image {
-  aspect-ratio: 16 / 10;
-  height: 100%;
-  object-fit: cover;
+  display: block;
+  height: 212px;
+  background: #ffffff;
+  object-fit: contain;
+  object-position: center;
   width: 100%;
 }
 
 .wt-service-list-content {
-  display: grid;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   gap: 0.7rem;
-  padding: 1rem;
+  height: 100%;
+  padding: 1rem 1rem 1.05rem;
 }
 
 .wt-service-list-head {
@@ -1434,15 +1468,28 @@ h2 {
 }
 
 .wt-service-list-content .wt-btn {
-  margin-top: 0.35rem;
+  margin-top: 0;
   width: fit-content;
 }
 
 .wt-service-list-actions {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-  margin-top: 0.25rem;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 0.55rem;
+  padding-bottom: 0.1rem;
+  width: 100%;
+}
+
+.wt-btn-compact {
+  border-radius: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-height: auto;
+  padding: 0.4rem 0.62rem;
 }
 
 .wt-service-list-cta {
@@ -1984,6 +2031,44 @@ h2 {
     width: 100%;
   }
 
+  .wt-service-list-grid {
+    gap: 0.82rem;
+  }
+
+  .wt-service-list-card {
+    border-radius: 14px;
+  }
+
+  .wt-service-list-image {
+    height: 132px;
+  }
+
+  .wt-service-list-content {
+    gap: 0.52rem;
+    padding: 0.76rem;
+  }
+
+  .wt-service-list-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .wt-service-list-head h2 {
+    font-size: 0.96rem;
+    line-height: 1.25;
+  }
+
+  .wt-service-list-content p {
+    font-size: 0.81rem;
+    line-height: 1.46;
+  }
+
+  .wt-service-list-points li span {
+    font-size: 0.78rem;
+    line-height: 1.42;
+  }
+
   .wt-service-list-actions {
     display: grid;
     grid-template-columns: 1fr;
@@ -2063,6 +2148,10 @@ h2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .wt-home-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .wt-feature-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2105,6 +2194,15 @@ h2 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .wt-home-services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .wt-home-services-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 68%;
+  }
+
   .wt-why {
     grid-template-columns: 1fr 1.35fr;
   }
@@ -2125,8 +2223,20 @@ h2 {
     padding: 2rem;
   }
 
-  .wt-service-list-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .wt-service-list-grid--structured {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .wt-service-list-grid--structured > .wt-service-list-card {
+    grid-column: span 4;
+  }
+
+  .wt-service-list-grid--structured > .wt-service-list-card:nth-child(7) {
+    grid-column: 3 / span 4;
+  }
+
+  .wt-service-list-grid--structured > .wt-service-list-card:nth-child(8) {
+    grid-column: 7 / span 4;
   }
 
   .wt-service-hero {

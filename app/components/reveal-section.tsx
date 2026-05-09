@@ -16,17 +16,19 @@ export default function RevealSection({
   delay = 0,
 }: RevealSectionProps) {
   const shouldReduceMotion = useReducedMotion();
-  const [skipInViewAnimation, setSkipInViewAnimation] = useState(false);
+  const [skipInViewAnimation, setSkipInViewAnimation] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
 
-  useEffect(() => {
-    const navEntry = performance.getEntriesByType("navigation")[0] as
+    const navEntry = window.performance.getEntriesByType("navigation")[0] as
       | PerformanceNavigationTiming
       | undefined;
 
-    if (navEntry?.type === "back_forward") {
-      setSkipInViewAnimation(true);
-    }
+    return navEntry?.type === "back_forward";
+  });
 
+  useEffect(() => {
     function handlePageShow(event: PageTransitionEvent) {
       if (event.persisted) {
         setSkipInViewAnimation(true);

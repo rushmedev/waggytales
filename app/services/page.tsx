@@ -4,26 +4,36 @@ import Link from "next/link";
 import { HeartHandshake, MapPin, Phone, Sparkles } from "lucide-react";
 import RevealSection from "../components/reveal-section";
 import ScrollProgress from "../components/scroll-progress";
-import { buildWhatsAppUrl, contactInfo } from "../config/contact";
+import { contactInfo } from "../config/contact";
 import { siteTheme } from "../config/theme";
 import { serviceDetails } from "../data/services";
 
 export const metadata: Metadata = {
   title: `Pet Care Services in Hyderabad | ${siteTheme.brand.name}`,
   description:
-    "Explore premium dog boarding, pet spa, vet clinic, training, swimming, and pet store services in Hyderabad by M & M Waggy Tales.",
+    "Explore premium dog boarding, pet spa, vet clinic, training, swimming, pet store, and pet party services in Hyderabad by M & M Waggy Tales.",
   keywords: [
     "pet services Hyderabad",
     "dog home stay Hyderabad",
+    "pet boarding Hyderabad",
     "pet grooming Hyderabad",
     "dog training Hyderabad",
     "pet swimming pool Hyderabad",
     "pet clinic Hyderabad",
+    "pet party Hyderabad",
+    "dog birthday party Hyderabad",
   ],
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/services",
+  },
   openGraph: {
     title: `Pet Care Services in Hyderabad | ${siteTheme.brand.name}`,
     description:
-      "Explore premium dog boarding, grooming, clinic, swimming, store, and training services in Hyderabad.",
+      "Explore premium dog boarding, grooming, clinic, swimming, store, training, and pet party services in Hyderabad.",
     type: "website",
     locale: "en_IN",
   },
@@ -112,7 +122,7 @@ export default function ServicesPage() {
         </RevealSection>
 
         <RevealSection className="wt-shell wt-service-list-grid-wrap" delay={0.08}>
-          <div className="wt-service-list-grid">
+          <div className="wt-service-list-grid wt-service-list-grid--structured">
             {serviceDetails.map((service) => (
               <article key={service.slug} className="wt-service-list-card">
                 <Image
@@ -125,11 +135,10 @@ export default function ServicesPage() {
                 <div className="wt-service-list-content">
                   <div className="wt-service-list-head">
                     <h2>{service.title}</h2>
-                    {service.tag ? <span>{service.tag}</span> : null}
                   </div>
                   <p>{service.shortDescription}</p>
                   <ul className="wt-service-list-points">
-                    {service.highlights.slice(0, 3).map((point) => (
+                    {service.highlights.slice(0, 2).map((point) => (
                       <li key={`${service.slug}-${point}`}>
                         <Sparkles className="wt-icon wt-icon-inline" />
                         <span>{point}</span>
@@ -138,16 +147,8 @@ export default function ServicesPage() {
                   </ul>
                   <div className="wt-service-list-actions">
                     <Link href={`/services/${service.slug}`} className="wt-btn wt-btn-primary">
-                      View Service Page
+                      View
                     </Link>
-                    <a
-                      className="wt-btn wt-btn-secondary"
-                      href={buildWhatsAppUrl(service.whatsappMessage)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      WhatsApp This Service
-                    </a>
                   </div>
                 </div>
               </article>

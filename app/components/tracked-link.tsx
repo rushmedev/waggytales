@@ -1,6 +1,5 @@
 "use client";
 
-import { sendGAEvent } from "@next/third-parties/google";
 import type { AnchorHTMLAttributes, MouseEvent } from "react";
 
 type TrackedLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -15,6 +14,15 @@ function shouldTrackForHostname(hostname: string) {
   return !LOCAL_HOSTNAMES.has(normalizedHost) && !normalizedHost.endsWith(".local");
 }
 
+function sendTrackEvent(
+  eventName: string,
+  eventParams: Record<string, string | number | boolean>
+) {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, eventParams);
+  }
+}
+
 export default function TrackedLink({
   eventName,
   eventParams,
@@ -23,10 +31,20 @@ export default function TrackedLink({
 }: TrackedLinkProps) {
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (shouldTrackForHostname(window.location.hostname)) {
-      sendGAEvent("event", eventName, eventParams ?? {});
+      sendTrackEvent(eventName, eventParams ?? {});
     }
     onClick?.(event);
   };
 
   return <a {...anchorProps} onClick={handleClick} />;
+}
+
+declare global {
+  interface Window {
+    gtag?: (
+      command: "event",
+      eventName: string,
+      eventParams: Record<string, string | number | boolean>
+    ) => void;
+  }
 }

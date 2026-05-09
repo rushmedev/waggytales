@@ -195,6 +195,12 @@ const faqs = [
   },
 ];
 
+const homeServiceRows = [
+  serviceDetails.slice(0, 3),
+  serviceDetails.slice(3, 6),
+  serviceDetails.slice(6, 8),
+];
+
 export default function Home() {
   return (
     <div className="wt-page" id="top">
@@ -409,18 +415,33 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="wt-services-grid">
-              {serviceDetails.map((service) => (
-                <article key={service.slug} className="wt-service-card">
-                  <div className="wt-service-head">
-                    <h3>{service.title}</h3>
-                    {service.tag ? <span>{service.tag}</span> : null}
-                  </div>
-                  <p>{service.shortDescription}</p>
-                  <Link href={`/services/${service.slug}`} className="wt-service-link">
-                    View Details
-                  </Link>
-                </article>
+            <div className="wt-home-services-stack">
+              {homeServiceRows.map((row, rowIndex) => (
+                <div
+                  key={`service-row-${rowIndex}`}
+                  className={`wt-home-services-grid ${
+                    rowIndex === 2 ? "wt-home-services-grid--two" : ""
+                  }`}
+                >
+                  {row.map((service) => (
+                    <article key={service.slug} className="wt-service-card">
+                      <Image
+                        src={service.heroImage}
+                        alt={service.heroAlt}
+                        width={1200}
+                        height={800}
+                        className="wt-home-service-image"
+                      />
+                      <div className="wt-service-head">
+                        <h3>{service.title}</h3>
+                      </div>
+                      <p>{service.shortDescription}</p>
+                      <Link href={`/services/${service.slug}`} className="wt-service-link">
+                        View Details
+                      </Link>
+                    </article>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
@@ -635,17 +656,6 @@ export default function Home() {
         <p className="wt-copyright">(c) 2026 {siteTheme.brand.name}. All rights reserved.</p>
       </footer>
 
-      <TrackedLink
-        className="wt-whatsapp-fab"
-        href={contactInfo.whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        eventName="whatsapp_click"
-        eventParams={{ button_location: "floating_button" }}
-      >
-        <Image src="/whatsapp.svg" alt="" width={16} height={16} className="wt-whatsapp-icon" />
-      </TrackedLink>
     </div>
   );
 }
