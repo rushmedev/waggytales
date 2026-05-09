@@ -195,12 +195,6 @@ const faqs = [
   },
 ];
 
-const homeServiceRows = [
-  serviceDetails.slice(0, 3),
-  serviceDetails.slice(3, 6),
-  serviceDetails.slice(6, 8),
-];
-
 export default function Home() {
   return (
     <div className="wt-page" id="top">
@@ -416,33 +410,26 @@ export default function Home() {
             </div>
 
             <div className="wt-home-services-stack">
-              {homeServiceRows.map((row, rowIndex) => (
-                <div
-                  key={`service-row-${rowIndex}`}
-                  className={`wt-home-services-grid ${
-                    rowIndex === 2 ? "wt-home-services-grid--two" : ""
-                  }`}
-                >
-                  {row.map((service) => (
-                    <article key={service.slug} className="wt-service-card">
-                      <Image
-                        src={service.heroImage}
-                        alt={service.heroAlt}
-                        width={1200}
-                        height={800}
-                        className="wt-home-service-image"
-                      />
-                      <div className="wt-service-head">
-                        <h3>{service.title}</h3>
-                      </div>
-                      <p>{service.shortDescription}</p>
-                      <Link href={`/services/${service.slug}`} className="wt-service-link">
-                        View Details
-                      </Link>
-                    </article>
-                  ))}
-                </div>
-              ))}
+              <div className="wt-home-services-grid wt-home-services-grid--structured">
+                {serviceDetails.map((service) => (
+                  <article key={service.slug} className="wt-service-card">
+                    <Image
+                      src={service.heroImage}
+                      alt={service.heroAlt}
+                      width={1200}
+                      height={800}
+                      className="wt-home-service-image"
+                    />
+                    <div className="wt-service-head">
+                      <h3>{service.title}</h3>
+                    </div>
+                    <p>{service.shortDescription}</p>
+                    <Link href={`/services/${service.slug}`} className="wt-service-link">
+                      View Details
+                    </Link>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </RevealSection>
