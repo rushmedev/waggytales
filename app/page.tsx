@@ -16,11 +16,13 @@ import {
   Users,
 } from "lucide-react";
 import HeroSlideshow from "./components/hero-slideshow";
+import MobileNavMenu from "./components/mobile-nav-menu";
 import ProofAnimationIcon, { type ProofAnimationName } from "./components/proof-animation-icon";
 import RevealSection from "./components/reveal-section";
 import ScrollProgress from "./components/scroll-progress";
 import TrackedLink from "./components/tracked-link";
 import { contactInfo } from "./config/contact";
+import { homePrimaryNavItems, mobileMenuItems, serviceSubmenuItems } from "./config/navigation";
 import { siteTheme } from "./config/theme";
 import { serviceDetails } from "./data/services";
 
@@ -48,14 +50,6 @@ type ProofStat = {
   animation: ProofAnimationName;
   note?: string;
 };
-
-const navItems = [
-  { label: "Services", href: "#services" },
-  { label: "Founders Message", href: "/founders-message" },
-  { label: "About", href: "#about" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "FAQs", href: "#faqs" },
-];
 
 const highlightStats: Stat[] = [
   { title: "Open Hours", value: "24/7 Premium Care", icon: Clock3 },
@@ -196,6 +190,11 @@ const faqs = [
 ];
 
 export default function Home() {
+  const mobileNavActions = [
+    { label: "Call Now", href: contactInfo.dialerUrl as string },
+    { label: "WhatsApp", href: contactInfo.whatsappUrl as string, variant: "secondary" as const },
+  ];
+
   return (
     <div className="wt-page" id="top">
       <ScrollProgress />
@@ -215,7 +214,7 @@ export default function Home() {
               <p className="wt-brand">{siteTheme.brand.name}</p>
             </div>
             <ul className="wt-nav-links" aria-label="Primary">
-              {navItems.map((item) => (
+              {homePrimaryNavItems.map((item) => (
                 <li key={item.label}>
                   <a href={item.href} className="wt-nav-link">
                     {item.label}
@@ -224,7 +223,7 @@ export default function Home() {
               ))}
             </ul>
             <TrackedLink
-              className="wt-btn wt-btn-primary"
+              className="wt-btn wt-btn-primary wt-nav-cta"
               href={contactInfo.dialerUrl}
               aria-label={`Call ${contactInfo.callNumber}`}
               eventName="call_click"
@@ -232,6 +231,11 @@ export default function Home() {
             >
               Book Now
             </TrackedLink>
+            <MobileNavMenu
+              items={mobileMenuItems}
+              serviceItems={serviceSubmenuItems}
+              actions={mobileNavActions}
+            />
           </nav>
         </div>
       </header>

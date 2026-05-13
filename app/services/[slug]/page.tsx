@@ -3,9 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CalendarClock, Camera, CheckCircle2, PhoneCall, Shield, Sparkles } from "lucide-react";
+import MobileNavMenu from "../../components/mobile-nav-menu";
 import RevealSection from "../../components/reveal-section";
 import ScrollProgress from "../../components/scroll-progress";
 import { buildWhatsAppUrl, contactInfo } from "../../config/contact";
+import { mobileMenuItems, serviceSubmenuItems } from "../../config/navigation";
 import { siteTheme } from "../../config/theme";
 import { getServiceBySlug, serviceDetails } from "../../data/services";
 
@@ -148,6 +150,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     },
   ];
   const serviceWhatsappUrl = buildWhatsAppUrl(service.whatsappMessage);
+  const mobileNavActions = [
+    { label: "Book Now", href: contactInfo.dialerUrl as string },
+    { label: "WhatsApp", href: serviceWhatsappUrl, variant: "secondary" as const },
+  ];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -207,7 +213,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             />
             <span>{siteTheme.brand.name}</span>
           </Link>
-          <div className="wt-inner-nav-actions">
+          <div className="wt-inner-nav-actions wt-inner-nav-actions-desktop">
             <Link className="wt-btn wt-btn-secondary" href="/services">
               All Services
             </Link>
@@ -215,6 +221,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               Book Now
             </a>
           </div>
+          <MobileNavMenu
+            items={mobileMenuItems}
+            serviceItems={serviceSubmenuItems}
+            actions={mobileNavActions}
+          />
         </nav>
       </header>
 

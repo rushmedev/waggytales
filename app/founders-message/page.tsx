@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, HeartHandshake, Phone } from "lucide-react";
+import MobileNavMenu from "../components/mobile-nav-menu";
 import RevealSection from "../components/reveal-section";
 import ScrollProgress from "../components/scroll-progress";
 import { contactInfo } from "../config/contact";
+import { mobileMenuItems, serviceSubmenuItems } from "../config/navigation";
 import { siteTheme } from "../config/theme";
 
 export const metadata: Metadata = {
@@ -13,7 +15,55 @@ export const metadata: Metadata = {
     "A personal note from the founders of M & M Waggy Tales on the values, care philosophy, and promise behind every pet stay.",
 };
 
+const founderMilestones = [
+  {
+    year: "2021",
+    title: "Waggy Tales Was Born",
+    description:
+      "We started with a simple goal: create a safe, loving, and transparent pet care home in Hyderabad.",
+    image: "/founders.webp",
+    alt: "Founders with their dogs at Waggy Tales",
+  },
+  {
+    year: "2022",
+    title: "Boarding Trust Expanded",
+    description:
+      "More pet parents trusted us for home-stay and daily updates, helping us build a stronger care routine system.",
+    image: "/home-1.webp",
+    alt: "Dog enjoying a secure home-stay environment",
+  },
+  {
+    year: "2023",
+    title: "Services Became Full Spectrum",
+    description:
+      "We expanded beyond stay to grooming, vet support, and training so families could find everything in one place.",
+    image: "/home-2.webp",
+    alt: "Happy pets under multi-service care",
+  },
+  {
+    year: "2024",
+    title: "Community of Happy Tails",
+    description:
+      "With every new family, our focus stayed the same: thoughtful care, clear communication, and emotional comfort.",
+    image: "/home-3.webp",
+    alt: "Playful dogs and joyful pet community",
+  },
+  {
+    year: "2025",
+    title: "Premium Care, Same Heart",
+    description:
+      "As we continue to grow, our core promise remains unchanged - every pet should feel at home with us.",
+    image: "/home-4.webp",
+    alt: "Premium pet care with happy dogs",
+  },
+];
+
 export default function FoundersMessagePage() {
+  const mobileNavActions = [
+    { label: "Call Us", href: contactInfo.dialerUrl as string },
+    { label: "WhatsApp", href: contactInfo.whatsappUrl as string, variant: "secondary" as const },
+  ];
+
   return (
     <div className="wt-page wt-founder-page">
       <ScrollProgress />
@@ -31,7 +81,7 @@ export default function FoundersMessagePage() {
             />
             <span>{siteTheme.brand.name}</span>
           </Link>
-          <div className="wt-inner-nav-actions">
+          <div className="wt-inner-nav-actions wt-inner-nav-actions-desktop">
             <Link className="wt-btn wt-btn-secondary" href="/">
               <ArrowLeft className="wt-icon wt-icon-inline" />
               <span>Back Home</span>
@@ -41,6 +91,11 @@ export default function FoundersMessagePage() {
               <span>Call Us</span>
             </a>
           </div>
+          <MobileNavMenu
+            items={mobileMenuItems}
+            serviceItems={serviceSubmenuItems}
+            actions={mobileNavActions}
+          />
         </nav>
       </header>
 
@@ -91,6 +146,46 @@ export default function FoundersMessagePage() {
             </p>
             <strong>Founding Team, M &amp; M Waggy Tales</strong>
           </article>
+        </RevealSection>
+
+        <RevealSection className="wt-shell wt-founder-timeline-wrap" delay={0.08}>
+          <div className="wt-founder-timeline-head">
+            <p className="wt-kicker">Our Journey</p>
+            <h2 className="wt-paw-heading wt-paw-heading-center">Moments that shaped us</h2>
+            <p className="wt-copy">
+              A timeline of meaningful milestones that reflect our growth and commitment to every
+              pet family.
+            </p>
+          </div>
+
+          <div className="wt-founder-timeline">
+            {founderMilestones.map((milestone, index) => (
+              <article
+                key={milestone.year}
+                className={`wt-founder-timeline-item ${
+                  index % 2 === 0 ? "is-right" : "is-left"
+                }`}
+              >
+                <span className={`wt-founder-year-pill ${index === 0 ? "is-highlight" : ""}`}>
+                  {milestone.year}
+                </span>
+
+                <div className="wt-founder-timeline-content">
+                  <Image
+                    src={milestone.image}
+                    alt={milestone.alt}
+                    width={1200}
+                    height={800}
+                    className="wt-founder-milestone-image"
+                  />
+                  <div className="wt-founder-timeline-copy">
+                    <h3>{milestone.title}</h3>
+                    <p>{milestone.description}</p>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </RevealSection>
 
         <RevealSection className="wt-shell wt-founder-signoff" delay={0.1}>

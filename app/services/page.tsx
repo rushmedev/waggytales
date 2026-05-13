@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { HeartHandshake, MapPin, Phone, Sparkles } from "lucide-react";
+import MobileNavMenu from "../components/mobile-nav-menu";
 import RevealSection from "../components/reveal-section";
 import ScrollProgress from "../components/scroll-progress";
 import { contactInfo } from "../config/contact";
+import { mobileMenuItems, serviceSubmenuItems } from "../config/navigation";
 import { siteTheme } from "../config/theme";
 import { serviceDetails } from "../data/services";
 
@@ -40,6 +42,11 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
+  const mobileNavActions = [
+    { label: "Call Now", href: contactInfo.dialerUrl as string },
+    { label: "WhatsApp", href: contactInfo.whatsappUrl as string, variant: "secondary" as const },
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -98,7 +105,7 @@ export default function ServicesPage() {
             />
             <span>{siteTheme.brand.name}</span>
           </Link>
-          <div className="wt-inner-nav-actions">
+          <div className="wt-inner-nav-actions wt-inner-nav-actions-desktop">
             <a className="wt-btn wt-btn-secondary" href={contactInfo.whatsappUrl}>
               WhatsApp
             </a>
@@ -106,6 +113,11 @@ export default function ServicesPage() {
               Call Now
             </a>
           </div>
+          <MobileNavMenu
+            items={mobileMenuItems}
+            serviceItems={serviceSubmenuItems}
+            actions={mobileNavActions}
+          />
         </nav>
       </header>
 
