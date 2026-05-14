@@ -222,15 +222,6 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <TrackedLink
-              className="wt-btn wt-btn-primary wt-nav-cta"
-              href={contactInfo.dialerUrl}
-              aria-label={`Call ${contactInfo.callNumber}`}
-              eventName="call_click"
-              eventParams={{ button_location: "navbar", phone_number: contactInfo.callNumber }}
-            >
-              Book Now
-            </TrackedLink>
             <MobileNavMenu
               items={mobileMenuItems}
               serviceItems={serviceSubmenuItems}

@@ -151,7 +151,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   ];
   const serviceWhatsappUrl = buildWhatsAppUrl(service.whatsappMessage);
   const mobileNavActions = [
-    { label: "Book Now", href: contactInfo.dialerUrl as string },
     { label: "WhatsApp", href: serviceWhatsappUrl, variant: "secondary" as const },
   ];
 
