@@ -11,6 +11,9 @@
   --wt-radius-lg: 22px;
   --wt-radius-md: 14px;
   --wt-shadow-soft: 0 20px 50px rgba(45, 45, 45, 0.09);
+  --wt-page-gutter: 1.125rem;
+  --wt-viewport-offset-top: 0px;
+  --wt-sticky-top-offset: calc(env(safe-area-inset-top, 0px) + var(--wt-viewport-offset-top));
 }
 
 @theme inline {
@@ -24,16 +27,23 @@
 
 html,
 body {
+  -webkit-text-size-adjust: 100%;
   margin: 0;
+  text-size-adjust: 100%;
   padding: 0;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: calc(5.5rem + var(--wt-sticky-top-offset));
 }
 
 body {
   background: linear-gradient(180deg, #fff9ef 0%, var(--wt-tertiary) 50%, #f9eee0 100%);
   color: var(--wt-neutral);
   font-family: var(--font-be-vietnam-pro), "Be Vietnam Pro", sans-serif;
+  position: relative;
+  touch-action: pan-y;
+  width: 100%;
 }
 
 img {
@@ -47,20 +57,21 @@ img {
 }
 
 .wt-page {
+  overflow-x: clip;
   padding-bottom: 5.5rem;
   min-height: 100vh;
 }
 
 .wt-shell {
   margin: 0 auto;
-  width: min(1140px, calc(100% - 2.25rem));
+  width: min(1140px, calc(100% - (var(--wt-page-gutter) * 2)));
 }
 
 .wt-nav-wrap {
   isolation: isolate;
   padding: 0.9rem 0;
   position: sticky;
-  top: 0;
+  top: var(--wt-sticky-top-offset);
   z-index: 30;
 }
 
@@ -405,7 +416,7 @@ img {
   left: 0;
   position: fixed;
   right: 0;
-  top: 0;
+  top: var(--wt-sticky-top-offset);
   transform-origin: 0%;
   z-index: 50;
 }
@@ -1557,7 +1568,7 @@ h2 {
 .wt-inner-nav-wrap {
   position: sticky;
   padding-top: 0.8rem;
-  top: 0;
+  top: var(--wt-sticky-top-offset);
   z-index: 1001;
 }
 
@@ -2193,8 +2204,21 @@ h2 {
 }
 
 @media (max-width: 719px) {
-  .wt-shell {
-    width: min(1140px, calc(100% - 1.25rem));
+  :root {
+    --wt-page-gutter: 0.75rem;
+  }
+
+  .wt-nav-wrap,
+  .wt-inner-nav-wrap {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: var(--wt-sticky-top-offset);
+    width: 100%;
+  }
+
+  .wt-page {
+    padding-top: 6rem;
   }
 
   .wt-nav-wrap {
@@ -2212,7 +2236,7 @@ h2 {
   }
 
   .wt-founder-hero-shell {
-    width: min(1200px, calc(100% - 1.1rem));
+    width: min(1200px, calc(100% - (var(--wt-page-gutter) * 2)));
   }
 
   .wt-founder-hero-card {

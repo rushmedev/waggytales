@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Be_Vietnam_Pro, Plus_Jakarta_Sans } from "next/font/google";
 import Image from "next/image";
 import Script from "next/script";
@@ -68,6 +68,12 @@ export const metadata: Metadata = {
     description:
       "Premium pet boarding, grooming, daycare, and vet support in Hyderabad with trusted care and transparent updates.",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
