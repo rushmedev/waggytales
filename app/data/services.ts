@@ -82,22 +82,22 @@ export const serviceDetails: ServiceDetail[] = [
   {
     slug: "vet-clinic",
     title: "Vet Clinic",
-    shortDescription: "Comprehensive care and wellness checkups to keep every companion healthy.",
+    shortDescription: "Preventive, diagnostic, and consultation-led veterinary care for dogs and cats.",
     seoDescription:
-      "Trusted vet clinic support for vaccination, routine checkups, and preventive care for pets in Hyderabad.",
+      "Trusted vet clinic in Hyderabad for checkups, vaccination, deworming, dermatology consultation, and laboratory diagnosis support.",
     whatsappMessage:
       "Hi M & M Waggy Tales, I need a Vet Clinic appointment. Please share consultation timings and process.",
-    heroImage: "/thumbnails/thumb-vet.webp",
-    heroAlt: "Veterinarian checking a dog",
+    heroImage: "/vet/vet%20(1).webp",
+    heroAlt: "Veterinary checkup support for pet dogs",
     highlights: [
-      "Routine checkups and preventive screenings",
-      "Vaccination planning and health records",
-      "Early symptom detection and guidance",
-      "Integrated support with boarding and grooming teams",
+      "General health checkups and emergency consultation support",
+      "Vaccination and deworming plans for canine and feline care",
+      "Dermatology consultation and laboratory diagnosis support",
+      "In-house pharmacy, travel certificate guidance, and pet wellness essentials",
     ],
     details: [
-      "Our veterinary support helps pet parents stay proactive with preventive care, timely vaccinations, and wellness follow-ups.",
-      "Care notes are coordinated with our boarding and grooming teams so each pet receives consistent, informed handling.",
+      "Our vet clinic is designed to support preventive care, timely diagnosis, and practical treatment planning for companion pets.",
+      "Consultation notes are coordinated with our broader care ecosystem so boarded and visiting pets receive consistent handling and follow-up support.",
     ],
   },
   {
@@ -128,7 +128,7 @@ export const serviceDetails: ServiceDetail[] = [
     seoDescription:
       "Pet swimming sessions for controlled exercise, cooling, and joint-friendly movement in Hyderabad.",
     whatsappMessage:
-      "Hi M & M Waggy Tales, I want to book a Swimming Pool session for my pet. Please share timing and charges.",
+      "Hi M & M Waggy Tales, I want to book a Swimming Pool session for my pet. Please share available timings and session details.",
     heroImage: "/thumbnails/thumb-pool.webp",
     heroAlt: "Dog swimming in a controlled pool session",
     highlights: [
