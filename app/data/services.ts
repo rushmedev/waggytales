@@ -87,7 +87,7 @@ export const serviceDetails: ServiceDetail[] = [
       "Trusted vet clinic in Hyderabad for checkups, vaccination, deworming, dermatology consultation, and laboratory diagnosis support.",
     whatsappMessage:
       "Hi M & M Waggy Tales, I need a Vet Clinic appointment. Please share consultation timings and process.",
-    heroImage: "/vet/vet%20(1).webp",
+    heroImage: "/thumbnails/thumb-vet.webp",
     heroAlt: "Veterinary checkup support for pet dogs",
     highlights: [
       "General health checkups and emergency consultation support",

@@ -250,10 +250,10 @@ const vetClinicProgram = {
   ],
   diagnostics: ["CBP", "LFT", "KFT", "Thyroid", "Diabetes", "Serum Electrolyte"],
   timings: [
-    "Monday to Sunday",
-    "External clients: 04:00 PM to 09:00 PM",
-    "Boarded clients: 04:00 PM to 09:00 PM",
-    "24/7 emergency support for boarded clients",
+    { label: "Monday to Sunday" },
+    { label: "External clients", time: "04:00 PM to 09:00 PM" },
+    { label: "Boarded clients", time: "04:00 PM to 09:00 PM" },
+    { label: "24/7 emergency support for boarded clients", time: "24/7" },
   ],
   consultationTypes: ["General health check-up", "Emergency consultation / visit"],
   canineVaccination: ["Canine Corona", "DHPPi + Lepto", "Anti Rabies", "Kennel Cough"],
@@ -281,6 +281,113 @@ const vetHeroHighlights = [
   {
     icon: Syringe,
     text: "In-house pharmacy, travel guidance & pet wellness",
+  },
+];
+
+const petSpaServiceCards = [
+  {
+    icon: Bath,
+    title: "Bath & Conditioning",
+    description: "Relaxing bath with premium shampoos and coat-conditioning care.",
+  },
+  {
+    icon: Sparkles,
+    title: "Hair & Coat Care",
+    description: "Brushing, blow dry, and coat grooming for a clean healthy shine.",
+  },
+  {
+    icon: PawPrint,
+    title: "Nail & Paw Care",
+    description: "Nail trimming and paw-pad cleanups for comfort and safety.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Ear & Oral Care",
+    description: "Routine ear cleaning and oral hygiene support for better wellness.",
+  },
+  {
+    icon: HeartPulse,
+    title: "Styling & Finishing",
+    description: "Expert finishing touches so your pet looks and feels amazing.",
+  },
+];
+
+const petSpaPackages = [
+  {
+    title: "Body Treatments",
+    items: [
+      "Normal Bath & Conditioning",
+      "Medicated Bath & Conditioning",
+      "Puppy Bath (Up to 4 Months)",
+      "De-shedding Treatment",
+      "Advanced Coat Care",
+      "Pet Hair Styling",
+    ],
+  },
+  {
+    title: "Combo Services",
+    items: [
+      "Basic Combo",
+      "Medicated Combo",
+      "Essential Wellness Combo",
+      "Comprehensive Combo",
+      "Perfect Grooming Package",
+      "Monster Clean-up Package",
+    ],
+  },
+  {
+    title: "Herbal Spa Treatments",
+    items: [
+      "Herbal Defence Pack (Rejuvenate)",
+      "Cooling Comfort Pack (Soothe)",
+      "Radiant Revival Pack (Revive)",
+    ],
+  },
+];
+
+const petSpaWhyCards = [
+  {
+    icon: Shield,
+    title: "Trained & Certified Groomers",
+    description: "Experienced professionals who handle every pet with care.",
+  },
+  {
+    icon: Sparkles,
+    title: "Safe & Hygienic Environment",
+    description: "Clean, sanitized, and pet-friendly grooming zones.",
+  },
+  {
+    icon: Bath,
+    title: "Premium Pet Safe Products",
+    description: "Gentle products selected for skin and coat health.",
+  },
+  {
+    icon: Heart,
+    title: "Personalized Care",
+    description: "Tailored sessions based on breed, coat type, and behavior.",
+  },
+];
+
+const petSpaGallery = [
+  {
+    src: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1200&q=80",
+    alt: "Golden retriever receiving a shower in a grooming salon",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?auto=format&fit=crop&w=1200&q=80",
+    alt: "White dog after grooming with clean coat and neat trim",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?auto=format&fit=crop&w=1200&q=80",
+    alt: "Dog being brushed by a professional groomer",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80",
+    alt: "Happy dog wrapped in a towel after bath",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?auto=format&fit=crop&w=1200&q=80",
+    alt: "Small dog during careful finishing trim at pet salon",
   },
 ];
 
@@ -349,6 +456,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const mobileNavActions = [
     { label: "WhatsApp", href: serviceWhatsappUrl, variant: "secondary" as const },
   ];
+  const isPetSpaSalonPage = service.slug === "pet-spa-salon";
   const isSwimmingPoolPage = service.slug === "swimming-pool";
   const isVetClinicPage = service.slug === "vet-clinic";
   const swimmingHighlightIcons = [Users, Shield, Waves, Bath];
@@ -387,6 +495,280 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       },
     ],
   };
+
+  if (isPetSpaSalonPage) {
+    return (
+      <div className="min-h-screen bg-[#fbf6f1] pb-12">
+        <ScrollProgress />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+
+        <header className="wt-shell wt-inner-nav-wrap">
+          <nav className="wt-inner-nav">
+            <Link href="/" className="wt-inner-nav-brand">
+              <Image
+                src="/waggy.jpg"
+                alt={`${siteTheme.brand.name} logo`}
+                width={40}
+                height={40}
+                className="wt-brand-logo"
+                preload
+              />
+              <span>{siteTheme.brand.name}</span>
+            </Link>
+            <div className="wt-inner-nav-actions wt-inner-nav-actions-desktop">
+              <Link className="wt-btn wt-btn-secondary" href="/services">
+                All Services
+              </Link>
+              <a className="wt-btn wt-btn-primary" href={contactInfo.dialerUrl}>
+                Book Now
+              </a>
+            </div>
+            <MobileNavMenu
+              items={mobileMenuItems}
+              serviceItems={serviceSubmenuItems}
+              actions={mobileNavActions}
+            />
+          </nav>
+        </header>
+
+        <main className="px-4 pb-8 pt-6">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-5">
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_14px_36px_rgba(24,24,27,0.06)] md:p-8"
+            >
+              <div className="grid items-center gap-6 lg:grid-cols-[1fr_1.06fr]">
+                <article className="space-y-5">
+                  <p className="inline-flex rounded-full bg-[#fff1e8] px-3 py-1 text-xs font-bold uppercase tracking-[0.1em] text-[#f16b34]">
+                    Service
+                  </p>
+                  <div className="space-y-3">
+                    <h1 className="font-[var(--font-plus-jakarta-sans)] text-4xl font-extrabold leading-tight text-[#1f2937] md:text-6xl">
+                      Grooming
+                      <br />
+                      Services
+                    </h1>
+                    <p className="max-w-xl text-base leading-8 text-[#4b5563] md:text-lg">
+                      Gentle care, expert grooming, and happy tails. Because your pet deserves to
+                      look and feel their best.
+                    </p>
+                  </div>
+                  <div className="grid gap-3 sm:max-w-md">
+                    <a
+                      href={contactInfo.dialerUrl}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#f16b34] px-5 py-3 text-sm font-bold text-white transition hover:brightness-95"
+                    >
+                      <PhoneCall className="h-4 w-4" />
+                      <span>Call us for Pricing & Appointments</span>
+                    </a>
+                    <a
+                      href={serviceWhatsappUrl}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#cfe2ff] px-5 py-3 text-sm font-bold text-[#22344e] transition hover:brightness-95"
+                    >
+                      <CalendarClock className="h-4 w-4" />
+                      <span>Book on WhatsApp</span>
+                    </a>
+                  </div>
+                </article>
+
+                <article className="relative overflow-hidden rounded-3xl border border-[#f2dfcf]">
+                  <Image
+                    src={petSpaGallery[0].src}
+                    alt={petSpaGallery[0].alt}
+                    width={1400}
+                    height={1100}
+                    className="h-full min-h-[340px] w-full object-cover"
+                    priority
+                  />
+                  <div className="absolute bottom-4 left-4 rounded-2xl border border-[#f2dfcf] bg-white/90 px-4 py-3 shadow-md backdrop-blur">
+                    <p className="font-[var(--font-plus-jakarta-sans)] text-sm font-bold text-[#1f2937]">
+                      Clean pets,
+                      <br />
+                      Happy hearts.
+                    </p>
+                  </div>
+                </article>
+              </div>
+
+              <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+                {[
+                  { icon: ShieldCheck, label: "Hygiene First" },
+                  { icon: Sparkles, label: "Premium Safe Products" },
+                  { icon: Shield, label: "Experienced Groomers" },
+                  { icon: Heart, label: "Stress-Free Handling" },
+                ].map((item) => (
+                  <article
+                    key={item.label}
+                    className="flex flex-col items-center gap-2 rounded-2xl border border-[#f2dfcf] bg-[#fffaf6] px-3 py-4 text-center"
+                  >
+                    <item.icon className="h-5 w-5 text-[#f16b34]" />
+                    <p className="text-sm font-semibold text-[#374151]">{item.label}</p>
+                  </article>
+                ))}
+              </div>
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)] md:p-6"
+              delay={0.06}
+            >
+              <div className="mb-5 text-center">
+                <h2 className="font-[var(--font-plus-jakarta-sans)] text-3xl font-extrabold text-[#1f2937]">
+                  Our Grooming Services
+                </h2>
+                <p className="mt-2 text-[#4b5563]">
+                  Complete grooming solutions tailored to your pet&apos;s needs.
+                </p>
+              </div>
+              <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+                {petSpaServiceCards.map((item) => (
+                  <article
+                    key={item.title}
+                    className="rounded-2xl border border-[#f2dfcf] bg-[#fffaf6] px-4 py-5 text-center"
+                  >
+                    <item.icon className="mx-auto h-6 w-6 text-[#f16b34]" />
+                    <h3 className="mt-3 font-[var(--font-plus-jakarta-sans)] text-lg font-bold text-[#1f2937]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-[#4b5563]">{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            </RevealSection>
+
+            <RevealSection className="grid gap-4 lg:grid-cols-3" delay={0.08}>
+              {petSpaPackages.map((pack, index) => (
+                <article
+                  key={pack.title}
+                  className={`rounded-3xl border p-5 shadow-[0_10px_24px_rgba(24,24,27,0.05)] ${
+                    index === 2 ? "border-[#f4ddcb] bg-[#fff7f1]" : "border-[#f2dfcf] bg-white"
+                  }`}
+                >
+                  <h3 className="font-[var(--font-plus-jakarta-sans)] text-2xl font-extrabold text-[#1f2937]">
+                    {pack.title}
+                  </h3>
+                  <ul className="mt-4 space-y-2">
+                    {pack.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-[#374151]">
+                        <PawPrint className="mt-0.5 h-4 w-4 shrink-0 text-[#f16b34]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {index === 1 ? (
+                    <Image
+                      src={petSpaGallery[3].src}
+                      alt={petSpaGallery[3].alt}
+                      width={640}
+                      height={420}
+                      className="mt-5 h-32 w-full rounded-2xl object-cover"
+                    />
+                  ) : null}
+                </article>
+              ))}
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-2xl border border-[#f2dfcf] bg-white px-4 py-3 text-sm text-[#4b5563]"
+              delay={0.1}
+            >
+              Pricing varies based on pet size, coat type, and treatment.{" "}
+              <span className="font-bold text-[#f16b34]">
+                Call us to know more and book an appointment.
+              </span>
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-[#fff8f2] p-5 md:p-6"
+              delay={0.12}
+            >
+              <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+                <div className="space-y-4">
+                  <h2 className="font-[var(--font-plus-jakarta-sans)] text-3xl font-extrabold text-[#1f2937]">
+                    Why Pet Parents Choose Us
+                  </h2>
+                  <Image
+                    src={petSpaGallery[2].src}
+                    alt={petSpaGallery[2].alt}
+                    width={640}
+                    height={500}
+                    className="h-44 w-full rounded-2xl object-cover"
+                  />
+                </div>
+                <div className="grid gap-3 md:grid-cols-2">
+                  {petSpaWhyCards.map((item) => (
+                    <article key={item.title} className="rounded-2xl border border-[#f2dfcf] bg-white p-4">
+                      <item.icon className="h-5 w-5 text-[#f16b34]" />
+                      <h3 className="mt-2 font-[var(--font-plus-jakarta-sans)] text-lg font-bold text-[#1f2937]">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-[#4b5563]">{item.description}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </RevealSection>
+
+            <RevealSection delay={0.14}>
+              <div className="mb-3 flex items-center gap-2">
+                <Camera className="h-5 w-5 text-[#f16b34]" />
+                <h2 className="font-[var(--font-plus-jakarta-sans)] text-3xl font-extrabold text-[#1f2937]">
+                  Grooming Gallery
+                </h2>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                {petSpaGallery.map((image) => (
+                  <figure
+                    key={image.src}
+                    className="overflow-hidden rounded-2xl border border-[#f2dfcf] bg-white"
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={800}
+                      height={600}
+                      className="h-52 w-full object-cover transition duration-300 hover:scale-105"
+                    />
+                  </figure>
+                ))}
+              </div>
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-[#fff8f2] p-5"
+              delay={0.16}
+            >
+              <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+                <p className="font-[var(--font-plus-jakarta-sans)] text-2xl font-bold text-[#1f2937]">
+                  Because every pet deserves to look good and feel great.
+                </p>
+                <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+                  <a
+                    href={contactInfo.dialerUrl}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#f16b34] px-5 py-3 text-sm font-bold text-white transition hover:brightness-95"
+                  >
+                    <PhoneCall className="h-4 w-4" />
+                    <span>Call us for Pricing</span>
+                  </a>
+                  <a
+                    href={serviceWhatsappUrl}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#cfe2ff] px-5 py-3 text-sm font-bold text-[#22344e] transition hover:brightness-95"
+                  >
+                    <CalendarClock className="h-4 w-4" />
+                    <span>Book on WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+            </RevealSection>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="wt-page wt-service-page">
@@ -675,9 +1057,9 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 <Heart className="wt-vet-program-heart" />
               </article>
 
-              <article className="wt-vet-service-list-card">
+              <article className="wt-vet-service-list-card wt-vet-service-list-card-core">
                 <h3>Core services</h3>
-                <ul className="wt-vet-service-list">
+                <ul className="wt-vet-service-list wt-vet-service-list-core">
                   {vetClinicProgram.services.map((item) => (
                     <li key={item}>
                       <PawPrint className="wt-icon wt-icon-inline" />
@@ -697,8 +1079,22 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 <h4 className="wt-vet-subhead">Timings</h4>
                 <ul className="wt-swim-list wt-vet-list-compact">
                   {vetClinicProgram.timings.map((item) => (
-                    <li key={item}>
-                      <span>{item}</span>
+                    <li key={`${item.label}-${item.time ?? "none"}`}>
+                      <span>
+                        {item.label}
+                        {item.time && item.label.includes(":") ? (
+                          <>
+                            {": "}
+                            <strong>{item.time}</strong>
+                          </>
+                        ) : item.time ? (
+                          <>
+                            {" ("}
+                            <strong>{item.time}</strong>
+                            {")"}
+                          </>
+                        ) : null}
+                      </span>
                     </li>
                   ))}
                 </ul>

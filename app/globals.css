@@ -2748,6 +2748,14 @@ h2 {
   width: 0.95rem;
 }
 
+.wt-vet-service-list-core {
+  grid-template-columns: 1fr;
+}
+
+.wt-vet-service-list-core li span {
+  white-space: nowrap;
+}
+
 .wt-vet-service-list .wt-icon-inline,
 .wt-vet-card .wt-service-detail-head .wt-icon-inline,
 .wt-vet-gallery-card .wt-service-detail-head .wt-icon-inline {
@@ -3017,6 +3025,20 @@ h2 {
 
   .wt-nav-wrap {
     padding: 0.65rem 0;
+  }
+
+  .wt-inner-nav-wrap {
+    isolation: isolate;
+  }
+
+  .wt-inner-nav-wrap::before {
+    backdrop-filter: blur(5px);
+    background: linear-gradient(180deg, rgba(253, 245, 230, 0.72), rgba(253, 245, 230, 0.28));
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 0;
   }
 
   .wt-nav {
