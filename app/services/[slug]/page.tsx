@@ -3,15 +3,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  Balloon,
   Bath,
   BriefcaseMedical,
+  CalendarDays,
   CalendarClock,
+  Cake,
+  CakeSlice,
   Camera,
   CheckCircle2,
   Clock3,
+  Gift,
   Heart,
   HeartPulse,
   PawPrint,
+  PartyPopper,
   PhoneCall,
   Shield,
   ShieldCheck,
@@ -391,6 +397,180 @@ const petSpaGallery = [
   },
 ];
 
+const trainingHeroHighlights = [
+  { icon: Sparkles, label: "Positive Reinforcement" },
+  { icon: ShieldCheck, label: "Certified & Experienced Trainers" },
+  { icon: PawPrint, label: "Customized Training Plans" },
+  { icon: Heart, label: "Better Behavior, Stronger Bond" },
+];
+
+const trainingBenefits = [
+  { icon: CheckCircle2, label: "Better Behavior" },
+  { icon: Users, label: "Stronger Bond" },
+  { icon: Shield, label: "Improved Confidence" },
+  { icon: HeartPulse, label: "Mental Stimulation" },
+  { icon: Heart, label: "Happier Home Environment" },
+];
+
+const trainingPrograms = [
+  {
+    icon: PawPrint,
+    title: "Puppy Training",
+    description: "Start your puppy's journey right with basic manners and socialization.",
+    points: ["Basic Commands", "Socialization", "Potty Training Guidance"],
+  },
+  {
+    icon: Shield,
+    title: "Basic Obedience",
+    description: "Build a strong foundation with essential obedience commands.",
+    points: ["Sit, Stay, Come", "Leash Training", "Focus & Attention"],
+  },
+  {
+    icon: HeartPulse,
+    title: "Behavior Modification",
+    description: "Address unwanted behaviors with positive and effective techniques.",
+    points: ["Barking Control", "Chewing / Jumping", "Anxiety & Reactivity"],
+  },
+  {
+    icon: Sparkles,
+    title: "Advanced Training",
+    description: "Take your dog's skills to the next level with advanced commands.",
+    points: ["Off-Leash Training", "Advanced Commands", "Trick Training"],
+  },
+];
+
+const trainingActionGallery = [
+  {
+    src: "https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=1200&q=80",
+    alt: "Dog sitting attentively during obedience training",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80",
+    alt: "Trainer helping a puppy during a learning session",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=1200&q=80",
+    alt: "Happy dog after a guided training activity",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1534361960057-19889db9621e?auto=format&fit=crop&w=1200&q=80",
+    alt: "Dogs participating in controlled social training",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80",
+    alt: "Dog responding to trainer cues in an outdoor session",
+  },
+];
+
+const trainingApproachPoints = [
+  "Positive reinforcement methods",
+  "Reward-based learning",
+  "Stress-free & humane techniques",
+  "Short, fun & engaging sessions",
+];
+
+const trainingJoinPoints = [
+  "Puppies (8 weeks and above)",
+  "Adult dogs of any breed",
+  "Rescue & adopted dogs",
+  "Dogs with behavioral challenges",
+];
+
+const trainingExpectPoints = [
+  "Personalized assessment",
+  "Customized training plan",
+  "Regular progress updates",
+  "Ongoing support & guidance",
+];
+
+const petPartyHeroHighlights = [
+  { icon: Balloon, label: "Fun & Safe Environment" },
+  { icon: PawPrint, label: "Supervised Activities" },
+  { icon: Cake, label: "Customized Celebrations" },
+  { icon: Camera, label: "Memorable Moments" },
+];
+
+const petPartyServices = [
+  {
+    icon: CalendarDays,
+    title: "Party Planning",
+    description: "Customized party plans tailored to your pet's needs and personality.",
+  },
+  {
+    icon: PartyPopper,
+    title: "Decor & Setup",
+    description: "Themed decorations and setup to create the perfect party vibe.",
+  },
+  {
+    icon: Balloon,
+    title: "Fun Activities",
+    description: "Engaging games and activities to keep every pet entertained.",
+  },
+  {
+    icon: CakeSlice,
+    title: "Yummy Treats",
+    description: "Pet-safe treats and cakes to make the celebration sweeter.",
+  },
+  {
+    icon: Camera,
+    title: "Photo Memories",
+    description: "Capture beautiful moments to cherish forever.",
+  },
+];
+
+const petPartyPackages = [
+  {
+    icon: Cake,
+    title: "Small Paw-ty",
+    subtitle: "Perfect for intimate celebrations",
+  },
+  {
+    icon: Balloon,
+    title: "Medium Paw-ty",
+    subtitle: "More friends, more fun",
+  },
+  {
+    icon: PartyPopper,
+    title: "Large Paw-ty",
+    subtitle: "Big celebrations, endless memories",
+  },
+  {
+    icon: Gift,
+    title: "Custom Paw-ty",
+    subtitle: "Tell us your idea, we'll make it happen!",
+  },
+];
+
+const petPartyIncluded = [
+  "Safe & Clean Venue",
+  "Supervised Fun",
+  "Music & Entertainment",
+  "Party Host Assistance",
+  "Goodie Bags for Pets",
+  "Water & Refreshments",
+  "Clean Up & Hassle Free",
+  "Lots of Love & Attention",
+];
+
+const petPartyMoments = [
+  {
+    src: "/thumbnails/thumb-party.webp",
+    alt: "Pet birthday celebration with party decor",
+  },
+  {
+    src: "/home-1.webp",
+    alt: "Happy dogs celebrating together",
+  },
+  {
+    src: "/home-3.webp",
+    alt: "Puppies enjoying a themed playtime celebration",
+  },
+  {
+    src: "/home-4.webp",
+    alt: "Friendly pet posing for a party memory photo",
+  },
+];
+
 export function generateStaticParams() {
   return serviceDetails.map((service) => ({ slug: service.slug }));
 }
@@ -459,6 +639,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const isPetSpaSalonPage = service.slug === "pet-spa-salon";
   const isSwimmingPoolPage = service.slug === "swimming-pool";
   const isVetClinicPage = service.slug === "vet-clinic";
+  const isPetPartyPage = service.slug === "pet-party";
+  const isTrainingPage = service.slug === "training";
   const swimmingHighlightIcons = [Users, Shield, Waves, Bath];
 
   const jsonLd = {
@@ -495,6 +677,546 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       },
     ],
   };
+
+  if (isPetPartyPage) {
+    return (
+      <div className="min-h-screen bg-[#fbf6f1] pb-12">
+        <ScrollProgress />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+
+        <header className="wt-shell wt-inner-nav-wrap">
+          <nav className="wt-inner-nav">
+            <Link href="/" className="wt-inner-nav-brand">
+              <Image
+                src="/waggy.jpg"
+                alt={`${siteTheme.brand.name} logo`}
+                width={40}
+                height={40}
+                className="wt-brand-logo"
+                preload
+              />
+              <span>{siteTheme.brand.name}</span>
+            </Link>
+            <div className="wt-inner-nav-actions wt-inner-nav-actions-desktop">
+              <Link className="wt-btn wt-btn-secondary" href="/services">
+                All Services
+              </Link>
+              <a className="wt-btn wt-btn-primary" href={contactInfo.dialerUrl}>
+                Book Now
+              </a>
+            </div>
+            <MobileNavMenu
+              items={mobileMenuItems}
+              serviceItems={serviceSubmenuItems}
+              actions={mobileNavActions}
+            />
+          </nav>
+        </header>
+
+        <main className="px-4 pb-8 pt-6">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-5">
+            <RevealSection className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_14px_36px_rgba(24,24,27,0.06)] md:p-8">
+              <div className="grid items-center gap-6 lg:grid-cols-[1fr_1.06fr]">
+                <article className="space-y-5">
+                  <p className="inline-flex rounded-full bg-[#fff1e8] px-3 py-1 text-xs font-bold uppercase tracking-[0.1em] text-[#f16b34]">
+                    Service
+                  </p>
+                  <div className="space-y-3">
+                    <h1 className="font-[var(--font-plus-jakarta-sans)] text-3xl font-extrabold leading-tight text-[#111827] md:text-5xl">
+                      Pet Party
+                      <br />
+                      Celebrations
+                    </h1>
+                    <p className="max-w-xl text-base leading-8 text-[#4b5563] md:text-lg">
+                      Celebrate your pet&apos;s special moments with joy, fun, and tail wags all
+                      around.
+                    </p>
+                  </div>
+                  <div className="grid gap-3 sm:max-w-md">
+                    <a
+                      href={contactInfo.dialerUrl}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#f16b34] px-5 py-3 text-sm font-bold text-white transition hover:brightness-95"
+                    >
+                      <PhoneCall className="h-4 w-4" />
+                      <span>Call us for Pricing & Appointments</span>
+                    </a>
+                    <a
+                      href={serviceWhatsappUrl}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#cfe2ff] px-5 py-3 text-sm font-bold text-[#22344e] transition hover:brightness-95"
+                    >
+                      <CalendarClock className="h-4 w-4" />
+                      <span>Book on WhatsApp</span>
+                    </a>
+                  </div>
+                </article>
+
+                <article className="relative overflow-hidden rounded-3xl border border-[#f2dfcf]">
+                  <Image
+                    src="/thumbnails/thumb-party.webp"
+                    alt="Pet party celebration setup with happy dogs"
+                    width={1000}
+                    height={900}
+                    className="h-full min-h-[340px] w-full object-cover"
+                    priority
+                  />
+                  <div className="absolute bottom-4 left-4 rounded-2xl border border-[#f2dfcf] bg-white/90 px-4 py-3 shadow-md backdrop-blur">
+                    <p className="font-[var(--font-plus-jakarta-sans)] text-sm font-bold text-[#1f2937]">
+                      Big moments deserve
+                      <br />
+                      bigger celebrations!
+                    </p>
+                  </div>
+                </article>
+              </div>
+
+              <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+                {petPartyHeroHighlights.map((item) => (
+                  <article
+                    key={item.label}
+                    className="flex flex-col items-center gap-2 rounded-2xl border border-[#f2dfcf] bg-[#fffaf6] px-3 py-4 text-center"
+                  >
+                    <item.icon className="h-5 w-5 text-[#f16b34]" />
+                    <p className="text-sm font-semibold text-[#374151]">{item.label}</p>
+                  </article>
+                ))}
+              </div>
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)] md:p-6"
+              delay={0.06}
+            >
+              <div className="rounded-2xl border border-[#f2dfcf] bg-[#fffaf6] px-5 py-6 text-left md:px-7">
+                <article className="mx-auto max-w-3xl">
+                  <h2 className="font-[var(--font-plus-jakarta-sans)] text-xl font-extrabold text-[#1f2937] md:text-2xl">
+                    Make Every Occasion
+                    <br />
+                    Extra Special
+                  </h2>
+                  <p className="mt-3 text-sm leading-7 text-[#4b5563] md:text-base">
+                    From birthdays to gotcha days, we create unforgettable celebrations filled with
+                    fun, friends, and furry happiness.
+                  </p>
+                </article>
+              </div>
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)] md:p-6"
+              delay={0.1}
+            >
+              <div className="mb-5 text-center">
+                <div className="inline-flex items-center gap-2">
+                  <PawPrint className="h-5 w-5 text-[#f16b34]" />
+                  <h2 className="font-[var(--font-plus-jakarta-sans)] text-2xl font-extrabold text-[#1f2937] md:text-3xl">
+                    Our Pet Party Services
+                  </h2>
+                  <PawPrint className="h-5 w-5 text-[#f16b34]" />
+                </div>
+                <p className="mt-2 text-[#4b5563]">Everything you need for a perfect celebration!</p>
+              </div>
+              <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+                {petPartyServices.map((serviceCard) => (
+                  <article
+                    key={serviceCard.title}
+                    className="rounded-2xl border border-[#f2dfcf] bg-[#fffaf6] px-4 py-5 text-center"
+                  >
+                    <serviceCard.icon className="mx-auto h-6 w-6 text-[#f16b34]" />
+                    <h3 className="mt-3 font-[var(--font-plus-jakarta-sans)] text-lg font-bold text-[#1f2937]">
+                      {serviceCard.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-[#4b5563]">{serviceCard.description}</p>
+                  </article>
+                ))}
+              </div>
+            </RevealSection>
+
+            <RevealSection className="grid gap-4 lg:grid-cols-2" delay={0.12}>
+              <article className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)]">
+                <div className="flex items-center gap-2">
+                  <PawPrint className="h-5 w-5 text-[#f16b34]" />
+                  <h3 className="font-[var(--font-plus-jakarta-sans)] text-2xl font-bold text-[#1f2937]">
+                    Party Packages
+                  </h3>
+                </div>
+                <p className="mt-1 text-sm text-[#4b5563]">Choose the perfect celebration for your pet.</p>
+                <ul className="mt-4 space-y-3">
+                  {petPartyPackages.map((pack) => (
+                    <li key={pack.title} className="flex items-start gap-3">
+                      <div className="mt-0.5 rounded-full bg-[#fff1e8] p-2">
+                        <pack.icon className="h-4 w-4 text-[#f16b34]" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-[#1f2937]">{pack.title}</p>
+                        <p className="text-sm text-[#4b5563]">{pack.subtitle}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <article className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)]">
+                <div className="flex items-center gap-2">
+                  <PawPrint className="h-5 w-5 text-[#f16b34]" />
+                  <h3 className="font-[var(--font-plus-jakarta-sans)] text-2xl font-bold text-[#1f2937]">
+                    What&apos;s Included
+                  </h3>
+                </div>
+                <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                  {petPartyIncluded.map((item) => (
+                    <div key={item} className="flex items-start gap-2 rounded-xl bg-[#fffaf6] px-3 py-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#f16b34]" />
+                      <p className="text-sm text-[#374151]">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            </RevealSection>
+
+            <RevealSection delay={0.14}>
+              <div className="mb-3 flex items-center gap-2">
+                <Camera className="h-5 w-5 text-[#f16b34]" />
+                <h2 className="font-[var(--font-plus-jakarta-sans)] text-2xl font-extrabold text-[#1f2937] md:text-3xl">
+                  Party Moments
+                </h2>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {petPartyMoments.map((image) => (
+                  <figure
+                    key={image.src}
+                    className="overflow-hidden rounded-2xl border border-[#f2dfcf] bg-white"
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={800}
+                      height={600}
+                      className="h-52 w-full object-cover transition duration-300 hover:scale-105"
+                    />
+                  </figure>
+                ))}
+              </div>
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-[#fff8f2] p-5"
+              delay={0.16}
+            >
+              <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+                <p className="font-[var(--font-plus-jakarta-sans)] text-xl font-bold text-[#1f2937] md:text-2xl">
+                  Because every pet deserves a celebration
+                  <br />
+                  filled with love, fun, and happy tails!
+                </p>
+                <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+                  <a
+                    href={contactInfo.dialerUrl}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#f16b34] px-5 py-3 text-sm font-bold text-white transition hover:brightness-95"
+                  >
+                    <PhoneCall className="h-4 w-4" />
+                    <span>Call us for Pricing & Appointments</span>
+                  </a>
+                  <a
+                    href={serviceWhatsappUrl}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#cfe2ff] px-5 py-3 text-sm font-bold text-[#22344e] transition hover:brightness-95"
+                  >
+                    <CalendarClock className="h-4 w-4" />
+                    <span>Book on WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+            </RevealSection>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
+  if (isTrainingPage) {
+    return (
+      <div className="min-h-screen bg-[#fbf6f1] pb-12">
+        <ScrollProgress />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+
+        <header className="wt-shell wt-inner-nav-wrap">
+          <nav className="wt-inner-nav">
+            <Link href="/" className="wt-inner-nav-brand">
+              <Image
+                src="/waggy.jpg"
+                alt={`${siteTheme.brand.name} logo`}
+                width={40}
+                height={40}
+                className="wt-brand-logo"
+                preload
+              />
+              <span>{siteTheme.brand.name}</span>
+            </Link>
+            <div className="wt-inner-nav-actions wt-inner-nav-actions-desktop">
+              <Link className="wt-btn wt-btn-secondary" href="/services">
+                All Services
+              </Link>
+              <a className="wt-btn wt-btn-primary" href={contactInfo.dialerUrl}>
+                Book Now
+              </a>
+            </div>
+            <MobileNavMenu
+              items={mobileMenuItems}
+              serviceItems={serviceSubmenuItems}
+              actions={mobileNavActions}
+            />
+          </nav>
+        </header>
+
+        <main className="px-4 pb-8 pt-6">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-5">
+            <RevealSection className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_14px_36px_rgba(24,24,27,0.06)] md:p-8">
+              <div className="grid items-center gap-6 lg:grid-cols-[1fr_1.06fr]">
+                <article className="space-y-5">
+                  <p className="inline-flex rounded-full bg-[#fff1e8] px-3 py-1 text-xs font-bold uppercase tracking-[0.1em] text-[#f16b34]">
+                    Service
+                  </p>
+                  <div className="space-y-3">
+                    <h1 className="font-[var(--font-plus-jakarta-sans)] text-3xl font-extrabold leading-tight text-[#111827] md:text-5xl">
+                      Pet Training
+                      <br />
+                      Programs
+                    </h1>
+                    <p className="max-w-xl text-base leading-8 text-[#4b5563] md:text-lg">
+                      Positive reinforcement training for a well-behaved, confident, and happy
+                      companion.
+                    </p>
+                  </div>
+                  <div className="grid gap-3 sm:max-w-md">
+                    <a
+                      href={contactInfo.dialerUrl}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#f16b34] px-5 py-3 text-sm font-bold text-white transition hover:brightness-95"
+                    >
+                      <PhoneCall className="h-4 w-4" />
+                      <span>Call us for Pricing & Appointments</span>
+                    </a>
+                    <a
+                      href={serviceWhatsappUrl}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#cfe2ff] px-5 py-3 text-sm font-bold text-[#22344e] transition hover:brightness-95"
+                    >
+                      <CalendarClock className="h-4 w-4" />
+                      <span>Book on WhatsApp</span>
+                    </a>
+                  </div>
+                </article>
+
+                <article className="relative overflow-hidden rounded-3xl border border-[#f2dfcf]">
+                  <Image
+                    src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?auto=format&fit=crop&w=1600&q=80"
+                    alt="Golden retriever during a guided outdoor training session"
+                    width={1600}
+                    height={1100}
+                    className="h-full min-h-[340px] w-full object-cover"
+                    priority
+                  />
+                  <div className="absolute bottom-4 left-4 rounded-2xl border border-[#f2dfcf] bg-white/90 px-4 py-3 shadow-md backdrop-blur">
+                    <p className="font-[var(--font-plus-jakarta-sans)] text-sm font-bold text-[#1f2937]">
+                      Train with love.
+                      <br />
+                      Live in harmony.
+                    </p>
+                  </div>
+                </article>
+              </div>
+
+              <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+                {trainingHeroHighlights.map((item) => (
+                  <article
+                    key={item.label}
+                    className="flex flex-col items-center gap-2 rounded-2xl border border-[#f2dfcf] bg-[#fffaf6] px-3 py-4 text-center"
+                  >
+                    <item.icon className="h-5 w-5 text-[#f16b34]" />
+                    <p className="text-sm font-semibold text-[#374151]">{item.label}</p>
+                  </article>
+                ))}
+              </div>
+            </RevealSection>
+
+            <RevealSection className="grid gap-4 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch" delay={0.06}>
+              <article className="flex h-full flex-col rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)] md:p-6">
+                <div className="flex items-center gap-2">
+                  <PawPrint className="h-5 w-5 text-[#f16b34]" />
+                  <h2 className="font-[var(--font-plus-jakarta-sans)] !text-xl font-extrabold text-[#1f2937] md:!text-2xl">
+                    About Our Training
+                  </h2>
+                </div>
+                <p className="mt-3 text-sm leading-7 text-[#4b5563] md:text-base">
+                  Our training programs are designed to bring out the best in your pet through
+                  science-backed methods and lots of positivity. From basic manners to advanced
+                  obedience, we help your dog become a confident and well-behaved family member.
+                </p>
+              </article>
+
+              <article className="flex h-full flex-col rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)] md:p-6">
+                <h2 className="font-[var(--font-plus-jakarta-sans)] !text-xl font-extrabold text-[#1f2937] md:!text-2xl">
+                  Training Benefits
+                </h2>
+                <div className="mt-5 grid flex-1 content-start gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {trainingBenefits.map((item) => (
+                    <article
+                      key={item.label}
+                      className="rounded-2xl border border-[#f2dfcf] bg-[#fffaf6] px-3 py-4 text-center"
+                    >
+                      <item.icon className="mx-auto h-5 w-5 text-[#f16b34]" />
+                      <p className="mt-2 text-sm font-semibold text-[#374151]">{item.label}</p>
+                    </article>
+                  ))}
+                </div>
+              </article>
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)] md:p-6"
+              delay={0.1}
+            >
+              <div className="mb-5 text-center">
+                <h2 className="font-[var(--font-plus-jakarta-sans)] !text-xl font-extrabold text-[#1f2937] md:!text-2xl">
+                  Our Training Programs
+                </h2>
+                <p className="mt-2 text-[#4b5563]">
+                  Programs tailored to your pet&apos;s age, temperament, and learning style.
+                </p>
+              </div>
+              <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                {trainingPrograms.map((program) => (
+                  <article
+                    key={program.title}
+                    className="rounded-2xl border border-[#f2dfcf] bg-[#fffaf6] px-4 py-5"
+                  >
+                    <program.icon className="h-6 w-6 text-[#f16b34]" />
+                    <h3 className="mt-3 font-[var(--font-plus-jakarta-sans)] text-lg font-bold text-[#1f2937] md:text-xl">
+                      {program.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-[#4b5563]">{program.description}</p>
+                    <ul className="mt-3 space-y-2">
+                      {program.points.map((point) => (
+                        <li key={point} className="flex items-start gap-2 text-sm text-[#374151]">
+                          <PawPrint className="mt-0.5 h-4 w-4 shrink-0 text-[#f16b34]" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </RevealSection>
+
+            <RevealSection className="grid gap-4 md:grid-cols-3" delay={0.12}>
+              <article className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)]">
+                <h3 className="font-[var(--font-plus-jakarta-sans)] text-xl font-bold text-[#1f2937] md:text-2xl">
+                  Training Approach
+                </h3>
+                <ul className="mt-3 space-y-2">
+                  {trainingApproachPoints.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-[#374151]">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#f16b34]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <article className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)]">
+                <h3 className="font-[var(--font-plus-jakarta-sans)] text-xl font-bold text-[#1f2937] md:text-2xl">
+                  Who Can Join?
+                </h3>
+                <ul className="mt-3 space-y-2">
+                  {trainingJoinPoints.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-[#374151]">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#f16b34]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <article className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)]">
+                <h3 className="font-[var(--font-plus-jakarta-sans)] text-xl font-bold text-[#1f2937] md:text-2xl">
+                  What to Expect?
+                </h3>
+                <ul className="mt-3 space-y-2">
+                  {trainingExpectPoints.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-[#374151]">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#f16b34]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            </RevealSection>
+
+            <RevealSection delay={0.14}>
+              <div className="mb-3 flex items-center gap-2">
+                <Camera className="h-5 w-5 text-[#f16b34]" />
+                <h2 className="font-[var(--font-plus-jakarta-sans)] text-2xl font-extrabold text-[#1f2937] md:text-3xl">
+                  Training in Action
+                </h2>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+                {trainingActionGallery.map((image) => (
+                  <figure
+                    key={image.src}
+                    className="overflow-hidden rounded-2xl border border-[#f2dfcf] bg-white"
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={800}
+                      height={600}
+                      className="h-52 w-full object-cover transition duration-300 hover:scale-105"
+                    />
+                  </figure>
+                ))}
+              </div>
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-[#fff8f2] p-5"
+              delay={0.16}
+            >
+              <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+                <p className="font-[var(--font-plus-jakarta-sans)] text-xl font-bold text-[#1f2937] md:text-2xl">
+                  Every dog can learn.
+                  <br />
+                  Let&apos;s build a better tomorrow, together.
+                </p>
+                <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+                  <a
+                    href={contactInfo.dialerUrl}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#f16b34] px-5 py-3 text-sm font-bold text-white transition hover:brightness-95"
+                  >
+                    <PhoneCall className="h-4 w-4" />
+                    <span>Call us for Pricing & Appointments</span>
+                  </a>
+                  <a
+                    href={serviceWhatsappUrl}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#cfe2ff] px-5 py-3 text-sm font-bold text-[#22344e] transition hover:brightness-95"
+                  >
+                    <CalendarClock className="h-4 w-4" />
+                    <span>Book on WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+            </RevealSection>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   if (isPetSpaSalonPage) {
     return (

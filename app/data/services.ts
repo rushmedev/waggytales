@@ -145,22 +145,23 @@ export const serviceDetails: ServiceDetail[] = [
   {
     slug: "training",
     title: "Training",
-    shortDescription: "Professional behavior training to develop confidence and social skills.",
+    shortDescription:
+      "Positive reinforcement training for a well-behaved, confident, and happy companion.",
     seoDescription:
-      "Structured pet training in Hyderabad for obedience, behavior improvement, and confidence building.",
+      "Pet training in Hyderabad with positive reinforcement methods for obedience, behavior improvement, and confidence building.",
     whatsappMessage:
       "Hi M & M Waggy Tales, I am interested in Training for my pet. Please share training plans and fees.",
     heroImage: "/thumbnails/thumb-training.webp",
     heroAlt: "Dog training session with handler",
     highlights: [
-      "Obedience and behavior correction modules",
-      "Positive reinforcement framework",
-      "Social confidence and leash discipline",
+      "Positive reinforcement methods for better behavior",
+      "Certified and experienced trainers",
+      "Customized plans based on age and temperament",
       "Parent guidance for at-home consistency",
     ],
     details: [
-      "Our training plans are built around clear routines and positive reinforcement, helping pets learn calmly and effectively.",
-      "Parents receive practical follow-up instructions to reinforce commands and maintain progress at home.",
+      "Our training programs are designed to bring out the best in your pet through science-backed methods and positive, reward-based learning.",
+      "From puppy manners to advanced obedience, we help dogs build confidence while supporting pet parents with practical at-home guidance.",
     ],
   },
   {
