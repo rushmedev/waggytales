@@ -255,10 +255,11 @@ export default function Home() {
               <TrackedLink
                 className="wt-btn wt-btn-secondary"
                 href={contactInfo.registerNowUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 eventName="register_click"
-                eventParams={{ button_location: "hero_register" }}
+                eventParams={{
+                  button_location: "hero_register",
+                  phone_number: contactInfo.callNumber,
+                }}
               >
                 Register Now
               </TrackedLink>
