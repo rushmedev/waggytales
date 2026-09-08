@@ -78,25 +78,25 @@ const highlightStats: Stat[] = [
 
 const validationNumbers: ProofStat[] = [
   {
-    title: "Avg Google Rating",
-    value: "4.7+",
+    title: "5 Star Ratings on Google",
+    value: "350+",
     animation: "paw-emblem",
     note: "Based on verified pet-parent reviews",
   },
   {
     title: "Pets Served",
-    value: "2000+",
+    value: "5000+",
     animation: "animal-lover",
     note: "Across boarding, grooming, clinic, and training",
   },
   {
     title: "Premium Services",
-    value: "6+",
+    value: "8+",
     animation: "pet-love",
     note: "One trusted destination for complete pet care",
   },
   {
-    title: "Care Monitoring",
+    title: "Human Monitoring",
     value: "24/7",
     animation: "insurance",
     note: "Round-the-clock supervision for comfort and safety",
@@ -111,7 +111,7 @@ const features: Feature[] = [
   },
   {
     title: "Transparency",
-    description: "Receive regular photo updates and videos during every stay.",
+    description: "Receive regular video and photo updates during every stay.",
     icon: ShieldCheck,
   },
   {
@@ -187,6 +187,11 @@ const faqs = [
     answer:
       "Yes. We follow your feeding instructions and medication schedule with written checklists for each pet.",
   },
+  {
+    question: "How do you care for pets who fall sick during their stay?",
+    answer:
+      "If a pet falls sick, we inform the pet parents, have our in-house vet check them promptly, and use our in-house pharmacy for basic medicines when needed.",
+  },
 ];
 
 export default function Home() {
@@ -234,7 +239,7 @@ export default function Home() {
       <main>
         <RevealSection className="wt-shell wt-hero">
           <article className="wt-hero-content">
-            <p className="wt-pill">Hyderabad&apos;s #1 pet home-stay</p>
+            <p className="wt-pill">Hyderabad&apos;s #1 premium pet home-stay</p>
             <h1 className="wt-paw-heading wt-paw-heading-center">
               Your pet, <span>our priority</span>
             </h1>
@@ -270,7 +275,7 @@ export default function Home() {
             <HeroSlideshow />
             <div className="wt-trust-card">
               <span className="wt-trust-label">Achievement</span>
-              <strong>2000+</strong>
+              <strong>5000+</strong>
               <p>Happy pet parents</p>
             </div>
           </article>
@@ -382,7 +387,7 @@ export default function Home() {
             <p className="wt-kicker">Our Story</p>
             <h2 className="wt-paw-heading">Weaving narratives of love</h2>
             <p className="wt-copy">
-              Founded by Megha Paul and Manjeet Kumar, M &amp; M Waggy Tales is more than a boarding
+              Founded by Megha and Manjeet, M &amp; M Waggy Tales is more than a boarding
               service. We started with one dream: every pet deserves a vacation as wonderful as their
               owners.
             </p>
@@ -400,8 +405,7 @@ export default function Home() {
               <p className="wt-kicker">What We Offer</p>
               <h2 className="wt-paw-heading wt-paw-heading-center">Tailored services for every need</h2>
               <p className="wt-copy wt-section-subcopy">
-                From medical support to luxury pampering, our facilities are designed for modern pet
-                families.
+                From medical support and hassle-free pickup & drop to luxury pampering, our facilities are designed for modern pet families.
               </p>
             </div>
 
@@ -479,6 +483,13 @@ export default function Home() {
               <p className="wt-copy wt-section-subcopy">
                 Don&apos;t just take our word for it. Listen to our community.
               </p>
+              <div className="wt-testimonials-meta">
+                <div className="wt-google-trust-pill">
+                  <Image src="/google.svg" alt="Google" width={18} height={18} />
+                  <strong>4.7+</strong>
+                  <span>Google rating from verified pet parents</span>
+                </div>
+              </div>
             </div>
 
             <div className="wt-testimonials-marquee">
@@ -486,15 +497,15 @@ export default function Home() {
                 {[...testimonials, ...testimonials].map((item, index) => (
                   <article key={`${item.author}-${index}`} className="wt-testimonial-card">
                     <div className="wt-review-top">
+                      <span className="wt-google-pill">
+                        <Image src="/google.svg" alt="" width={14} height={14} aria-hidden />
+                        Google Review
+                      </span>
                       <p className="wt-stars" aria-label="5 star review">
                         {Array.from({ length: 5 }).map((_, idx) => (
                           <Star key={idx} className="wt-star-icon" />
                         ))}
                       </p>
-                      <span className="wt-google-pill">
-                        <span className="wt-google-g">G</span>
-                        Google Review
-                      </span>
                     </div>
                     <p className="wt-quote">
                       <Quote className="wt-quote-mark" />

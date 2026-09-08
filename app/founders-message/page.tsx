@@ -105,10 +105,10 @@ export default function FoundersMessagePage() {
             <article className="wt-founder-hero-card">
               <blockquote className="wt-founder-hero-quote">
                 <p>
-                  &quot;Every pet who walks in should feel the same comfort, safety, and love they
-                  feel at home. That is our promise, every single day.&quot;
+                  &quot;Every pet who walks through our doors is loved like they already belong to
+                  us.&quot;
                 </p>
-                <cite>- Megha Paul &amp; Manjeet Kumar</cite>
+                <cite>- Megha &amp; Manjeet</cite>
               </blockquote>
               <Image
                 src="/founders.webp"
@@ -122,33 +122,52 @@ export default function FoundersMessagePage() {
           </div>
         </RevealSection>
 
-        <RevealSection className="wt-shell wt-founder-message-grid" delay={0.06}>
+        <RevealSection className="wt-shell flex flex-col gap-4" delay={0.06}>
+          {/* <article className="wt-founder-quote-card">
+            <HeartHandshake className="wt-icon wt-icon-inline" />
+            <p>
+              &quot;Every pet who walks through our doors is loved like they already belong to
+              us.&quot;
+            </p>
+            <strong>Founding Team, M &amp; M Waggy Tales</strong>
+          </article> */}
+
           <article className="wt-founder-note-card">
             <p className="wt-kicker">A Note From Us</p>
             <h1 className="wt-paw-heading">Founders Message</h1>
+            <p>We began M &amp; M Waggy Tales because of Lucy.</p>
             <p>
-              We began {siteTheme.brand.name} with one simple idea: pet care should feel deeply
-              personal. Not transactional. Not rushed. Just honest, attentive care from people who
-              truly understand the bond between pets and their families.
+              Lucy is our child, an adorable female Labrador who filled our home with love.
+              Whenever we had to travel, leaving her behind never felt easy.
             </p>
             <p>
-              Every routine here is designed with intention - safe social time, clean spaces,
-              regular updates, and emotional comfort. We do not just host pets, we build trust with
-              each family that chooses us.
+              We searched for a place in Hyderabad where she would feel safe, clean, free, and
+              loved like home. But we could not find the kind of care we wanted for her. Too often,
+              she came back from boarding with ticks, fleas, and discomfort. Slowly, we stopped
+              travelling because our hearts were never at peace leaving her behind.
             </p>
-          </article>
-
-          <article className="wt-founder-quote-card">
-            <HeartHandshake className="wt-icon wt-icon-inline" />
+            <p>That pain became our purpose.</p>
             <p>
-              &quot;To us, quality pet care means clear communication, calm handling, and genuine
-              affection - from the first hello to the happy ride back home.&quot;
+              Megha&apos;s childhood was filled with dogs, cats, ducks, and birds. Manjeet grew up
+              watching his family care for packs of stray dogs. Love for animals was always a part
+              of both their lives. Together, they decided to build the place they once wished
+              existed for Lucy.
             </p>
-            <strong>Founding Team, M &amp; M Waggy Tales</strong>
+            <p>
+              What started as home boarding has now grown into M &amp; M Waggy Tales, a warm,
+              leash-free, love-filled space for boarding, daycare, grooming, vet care, pool time,
+              pick-up and drop, and more.
+            </p>
+            <p>But our heart has stayed the same.</p>
+            <p>
+              We are pet parents first. Every routine here is built with love, patience,
+              cleanliness, safety, and comfort. Every pet who comes to us is cared for like our
+              own.
+            </p>
           </article>
         </RevealSection>
 
-        <RevealSection className="wt-shell wt-founder-timeline-wrap" delay={0.08}>
+        <RevealSection className="wt-shell wt-founder-timeline-wrap pt-2 md:pt-4" delay={0.08}>
           <div className="wt-founder-timeline-head">
             <p className="wt-kicker">Our Journey</p>
             <h2 className="wt-paw-heading wt-paw-heading-center">Moments that shaped us</h2>

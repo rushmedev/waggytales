@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import {
   Balloon,
   Bath,
+  BedDouble,
   BriefcaseMedical,
   CalendarDays,
   CalendarClock,
@@ -16,6 +17,7 @@ import {
   Gift,
   Heart,
   HeartPulse,
+  House,
   PawPrint,
   PartyPopper,
   PhoneCall,
@@ -25,6 +27,7 @@ import {
   Sparkles,
   Stethoscope,
   Syringe,
+  UtensilsCrossed,
   Users,
   Waves,
 } from "lucide-react";
@@ -571,6 +574,63 @@ const petPartyMoments = [
   },
 ];
 
+const doggyHomestayHighlights = [
+  {
+    icon: BedDouble,
+    title: "AC Rooms",
+    description: "Comfortable bedding and regular sanitization",
+  },
+  {
+    icon: Users,
+    title: "24x7 Caretakers",
+    description: "On-premise caretakers for active supervision",
+  },
+  {
+    icon: Camera,
+    title: "CCTV Monitoring",
+    description: "Monitored zones for enhanced safety",
+  },
+  {
+    icon: UtensilsCrossed,
+    title: "Daily Routine",
+    description: "Daily meal, walk, and rest routines tailored per pet",
+  },
+];
+
+const doggyHomestayTrustPoints = [
+  "Professional care plans with clear communication and daily updates.",
+  "Hygiene-first routines and comfort-focused handling by trained staff.",
+  "Easy booking support via call and WhatsApp for quick coordination.",
+];
+
+const doggyHomestayGalleryTiles = [
+  {
+    src: "/home-1.webp",
+    alt: "Calm beagle resting in a cozy bed area",
+    className: "",
+  },
+  {
+    src: "/home-4.webp",
+    alt: "Happy dog enjoying supervised playtime",
+    className: "",
+  },
+  {
+    src: "/home-2.webp",
+    alt: "Spacious indoor dog home-stay lounge",
+    className: "sm:col-span-2",
+  },
+  {
+    src: "/home-3.webp",
+    alt: "Dog comfortably eating a meal in routine care",
+    className: "",
+  },
+  {
+    src: "/thumbnails/thumb-boarding.webp",
+    alt: "Golden retriever relaxing on a bed in a home-like stay setting",
+    className: "",
+  },
+];
+
 export function generateStaticParams() {
   return serviceDetails.map((service) => ({ slug: service.slug }));
 }
@@ -640,6 +700,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const isSwimmingPoolPage = service.slug === "swimming-pool";
   const isVetClinicPage = service.slug === "vet-clinic";
   const isPetPartyPage = service.slug === "pet-party";
+  const isDoggyHomeStayPage = service.slug === "doggy-home-stay";
   const isTrainingPage = service.slug === "training";
   const swimmingHighlightIcons = [Users, Shield, Waves, Bath];
 
@@ -677,6 +738,213 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       },
     ],
   };
+
+  if (isDoggyHomeStayPage) {
+    return (
+      <div className="min-h-screen bg-[#fbf6f1] pb-12">
+        <ScrollProgress />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+
+        <header className="wt-shell wt-inner-nav-wrap">
+          <nav className="wt-inner-nav">
+            <Link href="/" className="wt-inner-nav-brand">
+              <Image
+                src="/waggy.jpg"
+                alt={`${siteTheme.brand.name} logo`}
+                width={40}
+                height={40}
+                className="wt-brand-logo"
+                preload
+              />
+              <span>{siteTheme.brand.name}</span>
+            </Link>
+            <div className="wt-inner-nav-actions wt-inner-nav-actions-desktop">
+              <Link className="wt-btn wt-btn-secondary" href="/services">
+                All Services
+              </Link>
+              <a className="wt-btn wt-btn-primary" href={contactInfo.dialerUrl}>
+                Book Now
+              </a>
+            </div>
+            <MobileNavMenu
+              items={mobileMenuItems}
+              serviceItems={serviceSubmenuItems}
+              actions={mobileNavActions}
+            />
+          </nav>
+        </header>
+
+        <main className="px-4 pb-8 pt-6">
+          <div className="mx-auto flex w-full max-w-6xl flex-col gap-5">
+            <RevealSection className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_14px_36px_rgba(24,24,27,0.06)] md:p-8">
+              <div className="grid items-center gap-6 lg:grid-cols-[1fr_1.12fr]">
+                <article className="space-y-5">
+                  <p className="inline-flex rounded-full bg-[#fff1e8] px-3 py-1 text-xs font-bold uppercase tracking-[0.1em] text-[#f16b34]">
+                    Service
+                  </p>
+                  <div className="space-y-3">
+                    <h1 className="font-[var(--font-plus-jakarta-sans)] text-3xl font-extrabold leading-tight text-[#111827] md:text-6xl">
+                      Dog Homestay
+                    </h1>
+                    <p className="max-w-xl text-base leading-8 text-[#4b5563] md:text-lg">
+                      Premium doggy home stay in Hyderabad with AC rooms, 24x7 on-premise
+                      caretakers, and CCTV monitoring for complete safety.
+                    </p>
+                  </div>
+                  <div className="grid gap-3 sm:max-w-md">
+                    <a
+                      href={contactInfo.dialerUrl}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#f16b34] px-5 py-3 text-sm font-bold text-white transition hover:brightness-95"
+                    >
+                      <PhoneCall className="h-4 w-4" />
+                      <span>Call {contactInfo.callNumber}</span>
+                    </a>
+                    <a
+                      href={serviceWhatsappUrl}
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#cfe2ff] px-5 py-3 text-sm font-bold text-[#22344e] transition hover:brightness-95"
+                    >
+                      <CalendarClock className="h-4 w-4" />
+                      <span>Book on WhatsApp</span>
+                    </a>
+                  </div>
+                </article>
+
+                <article className="relative overflow-hidden rounded-3xl border border-[#f2dfcf]">
+                  <Image
+                    src="/home-2.webp"
+                    alt="Pet parent with happy dogs in a comfortable home-stay setting"
+                    width={1400}
+                    height={1050}
+                    className="h-full min-h-[340px] w-full object-cover"
+                    priority
+                  />
+                  <div className="absolute bottom-4 left-4 rounded-2xl border border-[#f2dfcf] bg-white/90 px-4 py-3 shadow-md backdrop-blur">
+                    <p className="flex items-center gap-2 font-[var(--font-plus-jakarta-sans)] text-sm font-bold text-[#1f2937]">
+                      <ShieldCheck className="h-4 w-4 text-[#f16b34]" />
+                      <span>A home away from home for your furry family.</span>
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-white p-4 shadow-[0_12px_30px_rgba(24,24,27,0.05)] md:p-5"
+              delay={0.06}
+            >
+              <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+                {doggyHomestayHighlights.map((item) => (
+                  <article
+                    key={item.title}
+                    className="rounded-2xl border border-[#f2dfcf] bg-[#fffaf6] px-4 py-4"
+                  >
+                    <item.icon className="h-5 w-5 text-[#f16b34]" />
+                    <h3 className="mt-2 font-[var(--font-plus-jakarta-sans)] text-lg font-bold text-[#1f2937]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 text-sm leading-6 text-[#4b5563]">{item.description}</p>
+                  </article>
+                ))}
+              </div>
+            </RevealSection>
+
+            <RevealSection className="grid gap-4 lg:grid-cols-[1fr_1.05fr]" delay={0.1}>
+              <article className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)] md:p-6">
+                <div className="flex items-center gap-2">
+                  <PawPrint className="h-5 w-5 text-[#f16b34]" />
+                  <h2 className="font-[var(--font-plus-jakarta-sans)] text-2xl font-extrabold text-[#1f2937] md:text-3xl">
+                    Why pet parents choose this service
+                  </h2>
+                </div>
+                <div className="mt-3 space-y-4 text-sm leading-7 text-[#4b5563] md:text-base">
+                  {service.details.map((detail) => (
+                    <p key={detail}>{detail}</p>
+                  ))}
+                </div>
+                <ul className="mt-4 space-y-3">
+                  {doggyHomestayTrustPoints.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-[#374151]">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#f16b34]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Image
+                  src="/frisbee.svg"
+                  alt="Playful frisbee-themed pet illustration"
+                  width={900}
+                  height={500}
+                  className="mt-5 h-40 w-full rounded-2xl border border-[#f2dfcf] bg-[#fffaf6] object-contain p-2"
+                />
+              </article>
+
+              <article className="rounded-3xl border border-[#f2dfcf] bg-white p-5 shadow-[0_12px_30px_rgba(24,24,27,0.05)] md:p-6">
+                <div className="mb-4 flex items-center gap-2">
+                  <Camera className="h-5 w-5 text-[#f16b34]" />
+                  <h2 className="font-[var(--font-plus-jakarta-sans)] text-2xl font-extrabold text-[#1f2937] md:text-3xl">
+                    Service gallery
+                  </h2>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {doggyHomestayGalleryTiles.map((item) => (
+                    <figure
+                      key={item.src}
+                      className={`overflow-hidden rounded-2xl border border-[#f2dfcf] bg-white ${item.className}`}
+                    >
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        width={1000}
+                        height={700}
+                        className="h-44 w-full object-cover transition duration-300 hover:scale-105"
+                      />
+                    </figure>
+                  ))}
+                </div>
+              </article>
+            </RevealSection>
+
+            <RevealSection
+              className="rounded-3xl border border-[#f2dfcf] bg-[#fff8f2] p-5"
+              delay={0.14}
+            >
+              <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+                <p className="flex items-center gap-3 font-[var(--font-plus-jakarta-sans)] text-xl font-bold text-[#1f2937] md:text-2xl">
+                  <House className="h-7 w-7 text-[#f16b34]" />
+                  <span>
+                    Happy pets. Peace of mind for you.
+                    <br />
+                    A safe, loving, and comfortable stay while you&apos;re away.
+                  </span>
+                </p>
+                <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+                  <a
+                    href={contactInfo.dialerUrl}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#f16b34] px-5 py-3 text-sm font-bold text-white transition hover:brightness-95"
+                  >
+                    <PhoneCall className="h-4 w-4" />
+                    <span>Call {contactInfo.callNumber}</span>
+                  </a>
+                  <a
+                    href={serviceWhatsappUrl}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#cfe2ff] px-5 py-3 text-sm font-bold text-[#22344e] transition hover:brightness-95"
+                  >
+                    <CalendarClock className="h-4 w-4" />
+                    <span>Book on WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+            </RevealSection>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   if (isPetPartyPage) {
     return (
