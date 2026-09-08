@@ -3,6 +3,7 @@ import { Be_Vietnam_Pro, Plus_Jakarta_Sans } from "next/font/google";
 import Image from "next/image";
 import Script from "next/script";
 import type { CSSProperties } from "react";
+import { GoogleTagManager } from "@next/third-parties/google";
 import GoogleAnalyticsSafe from "./components/google-analytics-safe";
 import { contactInfo } from "./config/contact";
 import { siteTheme } from "./config/theme";
@@ -30,6 +31,7 @@ const themeVariables: CSSProperties = {
 } as CSSProperties;
 
 const GA_MEASUREMENT_ID = "G-79DP0HDRY5";
+const GTM_CONTAINER_ID = "GTM-KXQPMC7J";
 
 export const metadata: Metadata = {
   title: `${siteTheme.brand.name} | Premium Pet Care in Hyderabad`,
@@ -86,7 +88,16 @@ export default function RootLayout({
       lang="en"
       className={`${plusJakartaSans.variable} ${beVietnamPro.variable} h-full antialiased`}
     >
+      <GoogleTagManager gtmId={GTM_CONTAINER_ID} />
       <body className="min-h-full flex flex-col" style={themeVariables}>
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <Script
           id="contentsquare-uxa"
           src="https://t.contentsquare.net/uxa/9aee59e99b03b.js"
