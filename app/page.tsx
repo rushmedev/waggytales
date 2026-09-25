@@ -632,7 +632,9 @@ export default function Home() {
           <article>
             <h3>Quick Links</h3>
             <ul>
-              <li>Privacy Policy</li>
+              <li>
+                <Link href="/privacy-policy">Privacy Policy</Link>
+              </li>
               <li>Terms &amp; Conditions</li>
               <li>Contact Us</li>
             </ul>
