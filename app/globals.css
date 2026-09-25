@@ -1457,14 +1457,38 @@ h2 {
 .wt-contact-form {
   display: grid;
   gap: 0.5rem;
+  width: 100%;
 }
 
 .wt-contact-form input,
 .wt-newsletter input {
+  background: var(--wt-white);
   border: 1px solid #ddcbb5;
   border-radius: 10px;
   font: inherit;
   padding: 0.62rem 0.68rem;
+  width: 100%;
+}
+
+.wt-contact-form input:focus,
+.wt-newsletter input:focus {
+  border-color: var(--wt-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--wt-primary) 18%, transparent);
+  outline: none;
+}
+
+.wt-contact-form .wt-btn:disabled,
+.wt-newsletter .wt-btn:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.wt-lead-error {
+  color: #b42318;
+  font-size: 0.78rem;
+  grid-column: 1 / -1;
+  line-height: 1.45;
+  margin: 0;
 }
 
 .wt-sr-only {
@@ -1551,6 +1575,91 @@ h2 {
 
 .wt-newsletter .wt-btn {
   padding-inline: 1rem;
+}
+
+.wt-lead-modal-root {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1rem;
+  position: fixed;
+  z-index: 1000;
+}
+
+.wt-lead-modal-backdrop {
+  background: rgba(17, 24, 39, 0.58);
+  border: 0;
+  cursor: default;
+  inset: 0;
+  padding: 0;
+  position: absolute;
+}
+
+.wt-lead-modal {
+  align-items: center;
+  background: var(--wt-white);
+  border: 1px solid color-mix(in srgb, var(--wt-primary) 24%, white);
+  border-radius: 22px;
+  box-shadow: 0 24px 70px rgba(17, 24, 39, 0.24);
+  display: flex;
+  flex-direction: column;
+  max-width: 420px;
+  padding: 2rem 1.5rem 1.5rem;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.wt-lead-modal-close {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: #6b7280;
+  cursor: pointer;
+  display: inline-flex;
+  height: 36px;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  width: 36px;
+}
+
+.wt-lead-modal-close svg {
+  height: 20px;
+  width: 20px;
+}
+
+.wt-lead-modal-icon {
+  align-items: center;
+  background: color-mix(in srgb, #22c55e 14%, white);
+  border-radius: 999px;
+  color: #16803a;
+  display: inline-flex;
+  height: 64px;
+  justify-content: center;
+  width: 64px;
+}
+
+.wt-lead-modal-icon svg {
+  height: 34px;
+  width: 34px;
+}
+
+.wt-lead-modal h2 {
+  color: #1f2937;
+  font-family: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", sans-serif;
+  font-size: 1.35rem;
+  margin: 1rem 0 0;
+}
+
+.wt-lead-modal p {
+  color: #4b5563;
+  line-height: 1.65;
+  margin: 0.6rem 0 1.2rem;
 }
 
 .wt-copyright {

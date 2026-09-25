@@ -16,6 +16,7 @@ import {
   Users,
 } from "lucide-react";
 import HeroSlideshow from "./components/hero-slideshow";
+import LeadCaptureForm from "./components/lead-capture-form";
 import MobileNavMenu from "./components/mobile-nav-menu";
 import ProofAnimationIcon, { type ProofAnimationName } from "./components/proof-animation-icon";
 import RevealSection from "./components/reveal-section";
@@ -576,15 +577,7 @@ export default function Home() {
                 </li>
                 <li>During weekends and festival times we are closed for human visits.</li>
               </ul>
-              <form className="wt-contact-form" action="#">
-                <label htmlFor="email" className="wt-sr-only">
-                  Email
-                </label>
-                <input id="email" type="email" placeholder="Your email" />
-                <button type="submit" className="wt-btn wt-btn-primary">
-                  Send inquiry
-                </button>
-              </form>
+              <LeadCaptureForm leadType="inquiry" />
             </article>
             <article className="wt-map-card" aria-label="Location map preview">
               <a
@@ -641,12 +634,7 @@ export default function Home() {
           </article>
           <article>
             <h3>Newsletter</h3>
-            <div className="wt-newsletter">
-              <input type="email" placeholder="Your email" aria-label="Newsletter email" />
-              <button className="wt-btn wt-btn-primary" type="button">
-                Join
-              </button>
-            </div>
+            <LeadCaptureForm leadType="newsletter" />
           </article>
         </div>
         <p className="wt-copyright">(c) 2026 {siteTheme.brand.name}. All rights reserved.</p>
